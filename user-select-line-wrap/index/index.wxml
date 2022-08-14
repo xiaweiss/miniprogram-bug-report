@@ -1,0 +1,16 @@
+<view class="intro">欢迎使用代码片段，可在控制台查看代码片段的说明和文档</view>
+
+<view>无 user-select 正常换行：</view>
+<view>
+  <text>正正正</text><text>好好好</text>
+</view>
+
+<view>有 user-select 第一行正常换行：</view>
+<view>
+  <text user-select>正正正</text><text>好好好</text>
+</view>
+
+<view>有 user-select 第二行换行 bug：</view>
+<view>
+  <text user-select>正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正</text><text>好好好</text>
+</view>
