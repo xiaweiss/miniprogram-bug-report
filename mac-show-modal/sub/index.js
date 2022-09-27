@@ -5,6 +5,10 @@ Page({
 
   },
   onLoad() {
+    this.modal() 
+  },
+  onReady () {
+    // this.modal()
   },
   modal () {
     wx.showModal({
