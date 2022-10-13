@@ -7,4 +7,6 @@
 
 - [ ] [Mac 端小程序 wx.showToast 没有显示图标](https://developers.weixin.qq.com/community/develop/doc/000a48715e842049a87e2cafe51400)
 
-- [] [Mac 小程序 wx.showModal 的标题没有垂直居中](https://developers.weixin.qq.com/community/develop/doc/000828c95c8f78fca17e92a215fc00)
+- [ ] [Mac 小程序 wx.showModal 的标题没有垂直居中](https://developers.weixin.qq.com/community/develop/doc/000828c95c8f78fca17e92a215fc00)
+
+- [ ] [web-view 里 input 标签的 accept 无效](https://developers.weixin.qq.com/s/UjNK6Ym87AC9)
