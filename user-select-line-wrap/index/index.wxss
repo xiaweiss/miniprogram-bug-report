@@ -6,3 +6,7 @@
 view {
   margin: 10px;
 }
+
+.A {
+  color: #CC5656;
+}

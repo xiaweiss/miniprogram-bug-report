@@ -1,16 +1,17 @@
-<view class="intro">欢迎使用代码片段，可在控制台查看代码片段的说明和文档</view>
+<view class="intro">文字同时可以 1. 选中 user-select 2. 点击 bindtap</view>
 
-<view>无 user-select 正常换行：</view>
+
+<view>case 1：user-select + 可点击，但是期望不换行</view>
 <view>
-  <text>正正正</text><text>好好好</text>
+  <text user-select>正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正</text>
+  <text class="A" user-select bindtap="tap">可点击文字</text>
 </view>
 
-<view>有 user-select 第一行正常换行：</view>
+<view>case 2: user-select 包在外层，换行正常，但无法点击了</view>
 <view>
-  <text user-select>正正正</text><text>好好好</text>
+  <text user-select>
+    <text>正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正</text>
+    <text class="A" bindtap="tap">已绑定bindtap点击无反应</text>
+  </text>
 </view>
 
-<view>有 user-select 第二行换行 bug：</view>
-<view>
-  <text user-select>正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正</text><text>好好好</text>
-</view>
