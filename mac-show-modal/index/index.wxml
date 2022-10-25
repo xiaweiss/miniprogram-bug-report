@@ -1,3 +1,6 @@
 <view class="intro">欢迎使用代码片段，可在控制台查看代码片段的说明和文档</view>
-<view class="btn" bindtap="modal">点击弹 Modal</view>
-<view class="btn" bindtap="goSub">【Mac PC 有问题】点击跳转下一个页面，并弹 modal，请使用 预览 -> Mac 端自动预览</view>
+
+<view class="btn" bindtap="goSub">bug 1: 点击这里【Mac PC 有问题】跳转下一个页面，并弹 modal，程序卡死，请使用 预览 -> Mac 端自动预览</view>
+
+<view class="btn" bindtap="modal">bug 2: 点击这里【Mac PC 有问题】带输入框的 modal，输入框无法显示</view>
+

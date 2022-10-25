@@ -9,6 +9,7 @@ Page({
   modal () {
     wx.showModal({
       title: '提示',
+      editable: true,
       success (res) {
         if (res.confirm) {
           console.log('用户点击确定')
