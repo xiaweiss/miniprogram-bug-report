@@ -1,0 +1,9 @@
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+input {
+  margin: 0 30px;
+  border: 1px solid #ececec;
+}
