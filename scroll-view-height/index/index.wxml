@@ -1,0 +1,9 @@
+<scroll-view
+    id="page-scroll-view"
+    class="scroll-view"
+    enhanced
+    refresher-enabled
+    scroll-y
+>
+  <my-component />
+</scroll-view>

@@ -1,0 +1,7 @@
+<view class="intro">ios 手机端：页面有滚动条，并且在顶部时。键盘弹起后执行 页面滚动，会把 fixed 定位的元素上推。</view>
+
+<view class="intro">安卓手机端：textarea 使用了 hold-keyboard 时，设置 2 次 isFocus false，才能失去焦点。预期是 1 次</view>
+
+<view class="list" />
+
+<comment-add />

@@ -1,0 +1,4 @@
+<view class="intro">连续执行 2 次页面跳转，安卓跳 2 页，其他平台只跳 1 页</view>
+
+
+<view class="intro" bind:tap="onTap">跳转页面</view>

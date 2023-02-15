@@ -1,0 +1,5 @@
+.intro {
+  height: 102vh;
+  text-align: center;
+  background-color: pink;
+}

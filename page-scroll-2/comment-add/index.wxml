@@ -1,0 +1,36 @@
+<view
+  class="comment-add-shadow"
+  wx:if="{{isActive}}"
+  bind:tap="cancel"
+  catch:touchmove="noop"
+/>
+
+<view class="comment-add" style="{{customStyle}}">
+  <view class="input-container" bind:tap="focus">
+    <textarea
+      class="comment-input {{isIOS ? 'ios' : ''}}"
+      adjust-position="{{false}}"
+      auto-height
+      confirm-type="return"
+      disable-default-padding
+      focus="{{isFocus}}"
+      fixed
+      placeholder-class="input-placeholder"
+      placeholder="在此处评论"
+      show-confirm-bar="{{false}}"
+      type="text"
+      value="{{commentText}}"
+      bind:focus="onFocus"
+      bind:blur="onBlur"
+      bind:input="onInput"
+      bind:keyboardheightchange="onKeyboardHeightChange"
+      hold-keyboard
+    />
+  </view>
+
+  <view class="send" bind:tap="send">发送</view>
+</view>
+
+<view
+  class="comment-add-placeholder"
+/>

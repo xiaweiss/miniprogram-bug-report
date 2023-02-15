@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "note-child": "../note-child/index"
+  }
+}

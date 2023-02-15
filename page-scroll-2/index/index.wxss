@@ -1,0 +1,8 @@
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+.list {
+  height: 150vh;
+}

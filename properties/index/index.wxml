@@ -1,0 +1,3 @@
+<view class="intro">欢迎使用代码片段，可在控制台查看代码片段的说明和文档</view>
+
+<my-component />

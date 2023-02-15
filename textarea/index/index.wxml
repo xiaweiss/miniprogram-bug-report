@@ -1,0 +1,26 @@
+<view class="scroller">
+  <scroll-view
+    scroll-y
+  >
+    <view class="container">
+      <view class="intro">ios 真机聚焦键盘区域时</view>
+      <view class="intro">问题 1：导航栏被挤走</view>
+      <view class="intro">问题 2：设置了 adjust-position="false" 时，可能会自动失去焦点</view>
+      <view class="text-container">
+        <!-- <textarea
+          class="text"
+          value="{{text}}"
+          maxlength="-1"
+          adjust-position="false"
+          auto-height
+        /> -->
+        <textarea
+          class="text"
+          value="{{text}}"
+          maxlength="-1"
+          auto-height
+        />
+      </view>
+    </view>
+  </scroll-view>
+</view>

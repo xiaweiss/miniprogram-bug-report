@@ -1,0 +1,22 @@
+<view class="nav">skyline 模式：iOS 真机，下拉刷新后无法用 js 设置复原</view>
+
+<scroll-view
+  type="list"
+  class="scroll-view"
+  bounces="{{false}}"
+  enable-back-to-top
+  enable-passive
+  enhanced
+  lower-threshold="215"
+  refresher-enabled
+  refresher-triggered="{{refreshing}}"
+  scroll-anchoring
+  scroll-with-animation
+  scroll-y
+  bind:refresherrefresh="onPullDownRefresh"
+  bind:scrolltolower="onReachBottom"
+>
+  <block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+    <view>{{item}}</view>
+  </block>
+</scroll-view>
