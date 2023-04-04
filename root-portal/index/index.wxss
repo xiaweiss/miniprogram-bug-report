@@ -1,0 +1,24 @@
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+.cover-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: pink;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 80px;
+  margin: 0 auto;
+  background-color: skyblue;
+}

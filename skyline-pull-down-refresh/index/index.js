@@ -18,6 +18,9 @@ Page({
   async onPullDownRefresh () {
     console.log('onPullDownRefresh')
     this.data._refreshStartTime = Date.now()
+    this.setData({
+      refreshing: true
+    })
     await sleep(100)
     this.stopPullDownRefresh()
   },

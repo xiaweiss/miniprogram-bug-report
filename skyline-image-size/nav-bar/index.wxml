@@ -1,0 +1,19 @@
+<view
+  wx:if="{{!isPC}}"
+  id="nav-bar"
+  class="nav-bar"
+  style="position:{{position}};height:{{navbarHeight + navbarPaddingTop}}px;padding-top:{{navbarPaddingTop}}px;padding-right:{{navbarPaddingRight}}px;background:{{background}};"
+  bind:tap="pageScrollToTop"
+>
+  <view class="nav-bar-left" style="width:{{navbarPaddingRight}}px;height:{{capsuleHeight}}px">
+    <view wx:if="{{isBack}}" class="back" bind:tap="back">
+      <image class="icon-back" src="../assets/nav-bar-back.svg" />
+    </view>
+    <view wx:else class="home">
+      <image class="icon-home" src="../assets/nav-bar-home.svg" />
+    </view>
+  </view>
+  <view class="nav-bar-title {{isPC ? 'pc' : ''}}">
+    {{title}}
+  </view>
+</view>

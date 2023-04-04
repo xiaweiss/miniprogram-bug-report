@@ -1,0 +1,30 @@
+view {
+  display: flex;
+  flex-direction: row;
+}
+
+.intro {
+  margin: 30px;
+  margin-top: 64px;
+  text-align: center;
+}
+
+.box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  background: skyblue;
+}
+
+.center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  background: pink;
+}

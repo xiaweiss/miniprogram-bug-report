@@ -1,0 +1,7 @@
+<view class="intro">skyline 模式 position: absolute 元素无法利用 margin 居中</view>
+
+<view class="intro">下面定位元素，webview 模式在中心，skyline 模式在左上角</view>
+
+<view class="box">
+  <view class="center">定位元素</view>
+</view>

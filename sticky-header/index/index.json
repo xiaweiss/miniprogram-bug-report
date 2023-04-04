@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "disableScroll": true,
+  "usingComponents": {
+    "page": "../page/index"
+  },
+  "renderer": "skyline"
+}

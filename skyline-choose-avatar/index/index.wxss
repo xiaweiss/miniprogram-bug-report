@@ -1,0 +1,10 @@
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+.choose-avatar {
+  width: 100px;
+  height: 100px;
+  background-color: skyblue;
+}
