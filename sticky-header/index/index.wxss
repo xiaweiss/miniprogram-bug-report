@@ -229,6 +229,7 @@ view {
 }
 
 .sticky-header {
+  display: flex;
   position: sticky;
   left: 0;
   top: 0;

@@ -1,0 +1,17 @@
+<view class="intro">欢迎使用代码片段，可在控制台查看代码片段的说明和文档</view>
+
+<view class="intro">
+  <text max-lines="2" class="webview">[webview 样式]文字长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长</text>
+</view>
+
+<view class="intro">
+  <text max-lines="2" class="skyline">[skyline 样式]文字长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长</text>
+</view>
+
+<view class="intro">
+  <text max-lines="2" class="webview skyline">[webview + skyline]文字长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长</text>
+</view>
+
+<view class="intro">
+  <text max-lines="2" class="webview skyline" style="{{isSkyline ? '' : 'white-space: normal'}}">[webview + skyline + JS 判断]文字长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长</text>
+</view>

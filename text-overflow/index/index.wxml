@@ -1,0 +1,22 @@
+<view class="intro">text 开启 user-select 时，文字过长时无法显示省略号 text-overflow: ellipsis 无效</view>
+
+<view class="intro">1. 未开启 user-select，父元素上限制长度</view>
+<view class="box">
+  <text class="text">文字长长长长长长长长长长长长长长长长长长</text>
+</view>
+
+<view class="intro">2. 未开启 user-select，子元素上限制长度</view>
+<view>
+  <text class="text">文字长长长长长长长长长长长长长长长长长长</text>
+</view>
+
+
+<view class="intro">3. 开启 user-select，父元素上限制长度</view>
+<view class="box">
+  <text user-select>文字长长长长长长长长长长长长长长长长长长</text>
+</view>
+
+<view class="intro">4. 开启 user-select，子元素上限制长度</view>
+<view>
+  <text class="text" user-select>文字长长长长长长长长长长长长长长长长长长</text>
+</view>
