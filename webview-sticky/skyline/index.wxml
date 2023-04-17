@@ -1,0 +1,65 @@
+<view class="nav-bar">导航栏</view>
+
+<scroll-view
+  type="custom"
+  scroll-y
+  class="scroll-view"
+  enable-flex
+  enhanced
+>
+  <view class="container">
+  <sticky-header class="sticky-header">
+    <view class="sticky-item">sticky-item</view>
+  </sticky-header>
+
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  <view class='item'>item</view>
+  </view>
+</scroll-view>
+

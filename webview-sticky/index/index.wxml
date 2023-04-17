@@ -1,0 +1,3 @@
+<view class="intro">sticky 定位问题</view>
+<view class="button" bind:tap="webview">webview</view>
+<view class="button" bind:tap="skyline">skyline</view>

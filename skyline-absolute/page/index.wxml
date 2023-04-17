@@ -1,0 +1,3 @@
+<view class="page {{noBottom ? 'no-bottom' : ''}}" style="background:{{background}};">
+  <slot />
+</view>
