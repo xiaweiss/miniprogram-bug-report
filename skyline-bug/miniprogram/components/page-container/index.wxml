@@ -1,0 +1,21 @@
+<root-portal wx:if="{{isShow}}">
+  <view
+    class="page-container"
+    style="z-index:{{zIndex}};"
+  >
+    <view
+      wx:if="{{overlay}}"
+      class="page-container-overlay {{showing ? 'showing' : ''}}"
+      style="transition-duration:{{duration}}ms;{{overlayStyle}};"
+      bind:tap="{{overlayClose ? 'close' : ''}}"
+    />
+    <view
+      class="page-container-content {{position}} {{showing ? 'showing' : ''}}"
+      style="transition-duration:{{duration}}ms;{{customStyle}};"
+      bind:transitionend="onTransitionEnd"
+      catch:tap="noop"
+    >
+      <slot />
+    </view>
+  </view>
+</root-portal>

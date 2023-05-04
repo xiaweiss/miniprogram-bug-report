@@ -1,0 +1,10 @@
+{
+  "navigationStyle": "custom",
+  "backgroundColor": "#f5f6f8",
+  "disableScroll": true,
+  "usingComponents": {
+    "link-modal": "./link-modal/index",
+    "page-container": "../../components/page-container/index"
+  },
+  "renderer": "skyline"
+}

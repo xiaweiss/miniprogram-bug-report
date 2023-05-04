@@ -1,0 +1,9 @@
+<view>
+	<view>child-1</view>
+	<view>child-2</view>
+	<view>child-3</view>
+	<view>child-4</view>
+	<slot>
+		<view>child-5</view>
+	</slot>
+</view>

@@ -1,0 +1,45 @@
+page {
+  position: relative;
+  box-sizing: border-box;
+  /** 最小高度填充满视口，方便设置页面背景色 */
+  min-height: 100vh;
+  /** 默认字体 */
+  font-family: system-ui, -apple-system;
+  /** 移动端按钮按下时，去除高亮 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /** 默认行高 */
+  line-height: 1;
+}
+
+/**
+ * bug: root-portal 在 webview 模式，无法继承全局 page 的样式
+ * @see https://github.com/xiaweiss/miniprogram-bug-report/issues/40
+ */
+view {
+  font-family: system-ui, -apple-system;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+view,
+input {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  flex-direction: row
+}
+
+image {
+  display: block;
+}
+
+/** 分享按钮等默认样式重置，使用时需要设置 size="mini" */
+button {
+  display: block!important;
+  padding: 0!important;
+  /**
+   * bug: [skyline] button 组件在 flex 元素中渲染异常
+   *      @see https://github.com/xiaweiss/miniprogram-bug-report/issues/43
+   * hack 重置 margin 样式
+   */
+  margin: 0!important;
+  line-height: 1!important;
+}

@@ -1,0 +1,24 @@
+{
+  "entryPagePath": "pages/home/index",
+  "pages": [
+    "pages/home/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "代码片段",
+    "backgroundColor": "#fff"
+  },
+  "debug": false,
+  "resizable": true,
+  "usingComponents": {
+    "modal": "components/modal/index",
+    "page": "components/page/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "rendererOptions": {
+    "defaultDisplayBlock": true
+  }
+}

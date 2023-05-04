@@ -4,5 +4,6 @@
   "usingComponents": {
     "page": "../page/index"
   },
-  "renderer": "skyline"
+  "renderer": "skyline",
+  "componentFramework": "glass-easel"
 }

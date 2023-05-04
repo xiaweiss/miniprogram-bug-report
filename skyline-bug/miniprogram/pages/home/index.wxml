@@ -1,0 +1,25 @@
+<link-modal
+  show="{{linkModalShow}}"
+  bind:close="closeLinkModal"
+/>
+
+<modal id="modal" />
+
+<page
+  background="#f5f6f8"
+  lower-threshold="215"
+  refresher-enabled
+  refresher-triggered="{{refresherTriggered}}"
+>
+
+</page>
+
+
+<root-portal wx:if="{{isShow}}">
+  <view class="btn-add-note-container" style="left: 64px; top: 100px; background: skyblue; z-index: 10" />
+</root-portal>
+
+<root-portal>
+  <view class="btn-add-note-container" style="left: 32px; top: 100px; background: pink; z-index: 1000" bind:tap="onTap" />
+</root-portal>
+

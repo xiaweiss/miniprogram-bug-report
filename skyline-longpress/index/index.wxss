@@ -1,0 +1,9 @@
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+.button {
+	height: 100px;
+	background: pink;
+}

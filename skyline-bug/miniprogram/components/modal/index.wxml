@@ -1,0 +1,53 @@
+<wxs src="./contentSplit.wxs" module="contentSplit" />
+
+<page-container
+  show="{{modalShow}}"
+  overlay
+  overlayClose="{{overlayClose}}"
+  position="center"
+  bind:afterleave="afterClose"
+>
+  <view class="modal">
+    <view wx:if="{{title}}" class="title">{{title}}</view>
+    <view wx:if="{{editable}}" class="input-container">
+      <input
+        class="input"
+        always-embed
+        focus
+        hold-keyboard
+        maxlength="{{maxLength}}"
+        placeholder="{{placeholderText}}"
+        placeholder-class="input-placeholder"
+        value="{{content}}"
+        bind:input="onInput"
+      />
+    </view>
+    <block wx:elif="{{content}}">
+      <view
+        wx:for="{{contentSplit(content)}}"
+        wx:for-item="item"
+        wx:for-index="index"
+        wx:key="index"
+        class="content {{contentAlign}}"
+      >{{item}}</view>
+    </block>
+
+    <view class="button-container">
+      <view
+        wx:if="{{showCancel}}"
+        class="cancel"
+        style="{{'color: ' + cancelColor}}"
+        bind:tap="cancel"
+      >
+        {{cancelText}}
+      </view>
+      <view
+        class="confirm"
+        style="{{'color: ' + confirmColor}}"
+        bind:tap="confirm"
+      >
+        {{confirmText}}
+      </view>
+    </view>
+  </view>
+</page-container>

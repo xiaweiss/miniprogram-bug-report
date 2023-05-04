@@ -1,0 +1,19 @@
+<view
+  wx:if="{{!isPC}}"
+  id="nav-bar"
+  class="nav-bar"
+  style="position:{{position}};height:{{navbarHeight + navbarPaddingTop}}px;padding-top:{{navbarPaddingTop}}px;padding-right:{{navbarPaddingRight}}px;background:{{background}};z-index:{{zIndex}};"
+>
+  <view class="nav-bar-left" style="width:{{navbarPaddingRight}}px;height:{{capsuleHeight}}px">
+    <block wx:if="{{isHome}}">
+      <slot />
+    </block>
+    <view wx:elif="{{isBack}}" class="back" bind:tap="back">
+      <image class="icon-back" src="../../assets/icon/nav-bar-back.svg" />
+    </view>
+    <view wx:else class="home" bind:tap="home">
+      <image class="icon-home" src="../../assets/icon/nav-bar-home.svg" />
+    </view>
+  </view>
+  <text class="nav-bar-title {{isPC ? 'pc' : ''}}">{{title}}</text>
+</view>

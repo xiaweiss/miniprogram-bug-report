@@ -1,0 +1,63 @@
+.nav-bar,
+.nav-bar-left,
+.back,
+.home {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar {
+  flex-shrink: 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: transparent;
+}
+
+.nav-bar-left {
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.back {
+  align-items: center;
+  height: 100%;
+  padding-left: 16px;
+  padding-right: 12px;
+  cursor: pointer;
+}
+
+.icon-back {
+  width: 12px;
+  height: 24px;
+}
+
+.home {
+  align-items: center;
+  height: 100%;
+  padding-left: 18px;
+  padding-right: 12px;
+  cursor: pointer;
+}
+
+.icon-home {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-bar-title {
+  flex: 1;
+  display: inline-block;
+  width: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
