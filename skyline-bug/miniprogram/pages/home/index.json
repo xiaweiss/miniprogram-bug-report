@@ -1,10 +1,9 @@
 {
+  "navigationBarTitleText": "墨问早报",
   "navigationStyle": "custom",
-  "backgroundColor": "#f5f6f8",
   "disableScroll": true,
   "usingComponents": {
-    "link-modal": "./link-modal/index",
-    "page-container": "../../components/page-container/index"
+    "not-found": "../../components/not-found/index"
   },
   "renderer": "skyline"
 }

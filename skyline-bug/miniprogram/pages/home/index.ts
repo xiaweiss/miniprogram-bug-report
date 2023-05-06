@@ -1,28 +1,36 @@
+import { isSkyline } from '../../utils/index'
+import { img_note_not_found } from '../../assets/img/index'
+
+const app = getApp<AppData>()
+
 Page({
   data: {
-    linkModalShow: false,
-    isFold: false,
-    isShow: false
+    _loading: false,
+    _timeFrom: 0,
+    _timeTo: 0,
+    img_note_not_found,
+    notFoundHeight: 0,
+    /** 触发下拉刷新 */
+    refresherTriggered: false,
   },
-  showLinkModal () {
+  onLoad() {
     this.setData({
-      linkModalShow: true
+      isSkyline: isSkyline()
     })
-  },
-  closeLinkModal () {
-    this.setData({
-      linkModalShow: false
-    })
-  },
-  noop () {},
 
-  onLoad () {
+    wx.showLoading({title: '加载中...'})
 
+    this.onLoadLogin()
   },
 
-  onTap () {
+  async onLoadLogin () {
     this.setData({
-      isShow: !this.data.isShow
+      notFoundHeight:
+        app.globalData.systemInfo!.windowHeight -
+        app.globalData.safeAreaBottom - 94
     })
+
+    this.setData({loaded: true})
+    wx.hideLoading()
   },
 })

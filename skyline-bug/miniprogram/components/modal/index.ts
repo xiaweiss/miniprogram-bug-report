@@ -25,7 +25,7 @@ Component({
     isIOS: isIOS(),
     modalShow: false,
     keyboardHeight: app.globalData.keyboardHeight || 0,
-    ...defaultConfig,
+    ...defaultConfig
   },
   lifetimes: {
     created () {
@@ -41,6 +41,16 @@ Component({
   },
   methods: {
     noop() {},
+
+    onKeyboardHeightChange (e: {height: number}) {
+      this.setData({keyboardHeight: e.height})
+    },
+
+    onInput (e: WechatMiniprogram.Input) {
+      this.setData({
+        content: e.detail.value
+      })
+    },
 
     showModal(config: WechatMiniprogram.ShowModalOption) {
       this.setData({
@@ -61,15 +71,6 @@ Component({
     afterClose () {
       this.setData({
         ...defaultConfig
-      })
-    },
-    onKeyboardHeightChange (e: {height: number}) {
-      const height = e.height
-      this.setData({keyboardHeight: height})
-    },
-    onInput (e: WechatMiniprogram.Input) {
-      this.setData({
-        content: e.detail.value
       })
     },
     cancel () {

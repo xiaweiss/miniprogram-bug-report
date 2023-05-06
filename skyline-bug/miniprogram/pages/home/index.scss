@@ -1,84 +1,37 @@
-.btn-link-to-poster,
-.btn-share {
+.header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  box-shadow: 0px 4px 30px 1px #E6E6E8;
-  cursor: pointer;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.btn-link-to-poster,
-.btn-share {
-  position: absolute;
-  bottom: 49px;
-  width: 40px;
-  height: 40px;
-  background: #fff;
+
+.title-cn {
+  height: 29px;
 }
 
-.btn-link-to-poster {
-  left: 28px;
+.title-en {
+  padding-top: 11px;
+  height: 12px;
 }
 
-.icon-link {
-  width: 22px;
-  height: 22px;
-}
-
-.btn-share {
-  right: 28px;
-}
-
-.icon-share {
-  width: 18px;
-  height: 21px;
-  transform: translateY(-1px);
-}
-
-.absolute {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: env(safe-area-inset-bottom);
-}
-
-.box-container {
-  position: absolute;
-  left: 0;
-  top: 50vh;
-  width: 100vw;
-  height: 100vw;
-  background: #FFF;
-}
-
-.box {
-  width: 60vw;
-  height: 200px;
-  background: skyblue;
-  transition: all 300ms;
-
-  &.fold {
-    height: 100px;
-  }
-}
-
-.button {
+.time {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  background: pink;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 16px;
+  color: #353535;
 }
 
-.btn-add-note-container {
-  position: absolute;
-  left: 50%;
-  bottom: 38px;
-  z-index: 101;
-  width: 64px;
-  height: 64px;
-  transform: translate(-50%);
+.time-block {
+  width: 19px;
+  height: 6px;
+  background: #CC5656;
 }
 
+.time-week {
+  padding-top: 10px;
+}
+
+.time-date {
+  padding-top: 6px;
+}

@@ -4,6 +4,7 @@
   show="{{modalShow}}"
   overlay
   overlayClose="{{overlayClose}}"
+  customStyle="margin-top: -{{keyboardHeight / 2}}px;{{isIOS ? 'transition-property: all;' : ''}}"
   position="center"
   bind:afterleave="afterClose"
 >
