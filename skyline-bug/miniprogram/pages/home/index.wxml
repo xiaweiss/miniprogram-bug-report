@@ -6,7 +6,13 @@
   refresher-enabled
   refresher-triggered="{{refresherTriggered}}"
 >
-  <view class="header">
+  <view style="height:20px;background:pink;">
+    111
+  </view>
+  <view style="height:20px;background:skyblue;margin-top:10px;">
+    222
+  </view>
+  <!-- <view class="header">
     <view class="title">
       <image class="title-cn" mode="heightFix" src="../../assets/icon/newsletter-title-cn.svg" />
       <image class="title-en" mode="heightFix" src="../../assets/icon/newsletter-title-en.svg" />
@@ -16,13 +22,15 @@
       <view class="time-week">周六</view>
       <view class="time-date">05/06</view>
     </view>
-  </view>
+  </view> -->
 
-  <not-found
+
+
+  <!-- <not-found
     height="{{notFoundHeight}}"
     image="{{img_note_not_found}}"
     text="暂无动态"
-  />
+  /> -->
 </page>
 
 
