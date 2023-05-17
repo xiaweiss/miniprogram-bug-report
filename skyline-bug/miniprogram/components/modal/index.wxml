@@ -24,13 +24,17 @@
       />
     </view>
     <block wx:elif="{{content}}">
-      <view
+      <!-- 可以考虑写个 wxs，用 content.split('\n') 加循环实现  -->
+      <!-- <view
         wx:for="{{contentSplit(content)}}"
         wx:for-item="item"
         wx:for-index="index"
         wx:key="index"
         class="content {{contentAlign}}"
-      >{{item}}</view>
+      >{{item}}</view> -->
+      <view
+        class="content {{contentAlign}}"
+      >{{content}}</view>
     </block>
 
     <view class="button-container">
