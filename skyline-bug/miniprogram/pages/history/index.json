@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "互动",
+  "navigationStyle": "custom",
+  "disableScroll": true,
+  "usingComponents": {
+    "not-found": "../../components/not-found/index",
+    "note-item": "../../components/note-item/index"
+  },
+  "renderer": "skyline"
+}

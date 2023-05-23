@@ -1,0 +1,235 @@
+// @ts-check
+
+/**
+ * @typedef {Object} State 自定义局部变量
+ * @property {number} startX 开始位置 X
+ * @property {number} startY 开始位置 Y
+ * @property {'' | 'h' | 'v'} direction 滑动方向
+ * @property {number} startOffset 开始偏移量
+ * @property {number} offset 偏移量
+ * @property {number} rightWidth 右侧宽度
+ * @property {boolean} isOpen 是否打开
+ * @property {boolean} stopTouchmove 是否阻止触摸移动事件冒泡
+ * @property {boolean} touching 是否正在触摸
+ */
+
+/**
+ * @typedef {Object} Instance 页面/组件实例
+ * @property {function() : State} getState 返回一个object对象，当有局部变量需要存储起来后续使用的时候用这个方法。
+ * @property {function(string) : void} addClass 设置组件的 class。设置的 class 优先级比组件 wxml 里面定义的 class 高。不能设置最顶层页面的 class。
+ * @property {function(string) : void} removeClass 设置组件的 class。设置的 class 优先级比组件 wxml 里面定义的 class 高。不能设置最顶层页面的 class。
+ * @property {function(string) : void} setStyle 设置组件样式，支持rpx。设置的样式优先级比组件 wxml 里面定义的样式高。不能设置最顶层页面的样式。
+ * @property {function(string, object) : void} callMethod 调用当前组件/页面在逻辑层（App Service）定义的函数。funcName表示函数名称，args表示函数的参数。
+ */
+
+/**
+ * @typedef {Object} TouchEvent Touch 事件
+ * @property {Instance} instance
+ * @property {TouchDetail[]} touches
+ */
+
+/**
+ * @typedef {Object} TouchDetail Touch 对象
+ * @property {number} clientX 距离页面可显示区域 (屏幕除去导航条) 左上角距离，横向为 X 轴
+ * @property {number} clientY 距离页面可显示区域 (屏幕除去导航条) 左上角距离，纵向为 Y 轴
+ */
+
+/**
+ * 监听 rightWidth 变化
+ * @param {number} newValue
+ * @param {number} oldValue
+ * @param {Instance} ownerInstance
+ * @param {Instance} instance
+ */
+function onRightWidthChange (newValue, oldValue = 0, ownerInstance, instance) {
+  if (newValue === oldValue) return
+
+  var state = instance.getState()
+  state.rightWidth = newValue
+
+  // 宽度变化后，保持打开状态
+  if (state.offset && state.offset < 0) {
+    open(instance, ownerInstance)
+  }
+}
+
+/**
+ * 监听 isOpen 变化（从组件同步 isOpen 状态给 wxs）
+ * @param {boolean} newValue
+ * @param {boolean} oldValue
+ * @param {Instance} ownerInstance
+ * @param {Instance} instance
+ */
+function onIsOpenChange (newValue, oldValue = false, ownerInstance, instance) {
+  if (newValue === oldValue) return
+
+  var state = instance.getState()
+
+  if (state.isOpen !== newValue) {
+    if (newValue) {
+      open(instance, ownerInstance)
+    } else {
+      close(instance, ownerInstance)
+    }
+  }
+}
+
+/**
+ * 按下
+ * @param {TouchEvent} event
+ * @param ownerInstance
+ */
+function touchstart (event, ownerInstance) {
+  var state = event.instance.getState()
+
+  var touch = event.touches[0]
+  state.startX = touch.clientX
+  state.startY = touch.clientY
+  state.direction = ''
+  state.startOffset = state.offset || 0
+  state.stopTouchmove = false
+  state.touching = true
+
+  event.instance.removeClass('transition')
+
+  if (!state.isOpen) {
+    ownerInstance.callMethod('pageTouchstart')
+  }
+}
+
+function slotTouchstart (event, ownerInstance) {
+  var instance = ownerInstance.selectComponent('.swipe-action')
+  event.instance = instance
+
+  var state = event.instance.getState()
+
+  if (state.isOpen) {
+    touchstart(event, ownerInstance)
+  }
+}
+
+/**
+ * 移动
+ * @param {TouchEvent} event
+ * @param {Instance} ownerInstance
+ */
+function touchmove (event, ownerInstance) {
+  var state = event.instance.getState()
+
+  var touch = event.touches[0]
+  var offsetX = touch.clientX - state.startX
+  var offsetY = touch.clientY - state.startY
+
+  if (!state.direction) {
+    state.direction = getDirection(offsetX, offsetY)
+  }
+
+  if (state.direction !== 'h') return
+
+  // 阻止竖向滚动
+  if (!state.stopTouchmove) {
+    state.stopTouchmove = true
+    ownerInstance.callMethod('onStopTouchmoveChange', {stopTouchmove: true})
+  }
+
+  if (state.touching) {
+    setOffset(state.startOffset + offsetX, event.instance)
+  }
+}
+
+/**
+ * 抬起
+ * @param {TouchEvent} event
+ * @param {Instance} ownerInstance
+ */
+function touchend (event, ownerInstance) {
+  var state = event.instance.getState()
+  var rightWidth = state.rightWidth
+  var offset = state.offset
+  var THRESHOLD = 0.3
+
+  state.touching = false
+  event.instance.addClass('transition')
+
+  // 释放竖向滚动
+  if (state.stopTouchmove) {
+    state.stopTouchmove = false
+    ownerInstance.callMethod('onStopTouchmoveChange', {stopTouchmove: false})
+  }
+
+  if (rightWidth > 0 && -offset >= rightWidth * THRESHOLD) {
+    open(event.instance, ownerInstance)
+  } else {
+    close(event.instance, ownerInstance)
+  }
+
+  // wxs 同步组件 isOpen 状态
+  ownerInstance.callMethod('onIsOpenChange', {isOpen: state.isOpen})
+}
+
+/**
+ * 打开
+ * @param {Instance} instance
+ * @param {Instance} ownerInstance
+ */
+function open (instance, ownerInstance) {
+  var state = instance.getState()
+  var rightWidth = state.rightWidth
+
+  state.isOpen = true
+  setOffset(-rightWidth, instance)
+}
+
+/**
+ * 关闭
+ * @param {Instance} instance
+ * @param {Instance} ownerInstance
+ */
+function close (instance, ownerInstance) {
+  var state = instance.getState()
+
+  state.isOpen = false
+  setOffset(0, instance)
+}
+
+/**
+ * 设置偏移量
+ * @param {number} offset
+ * @param {Instance} instance
+ */
+function setOffset (offset, instance) {
+  var state = instance.getState()
+  var rightWidth = state.rightWidth
+
+  // 限制滑动范围
+  offset = Math.min(Math.max(offset, -rightWidth), 0)
+  state.offset = offset
+  instance.setStyle('transform:translate3d(' + offset + 'px,0,0)')
+}
+
+function getDirection (x, y) {
+  var MIN_DISTANCE = 10
+  x = Math.abs(x)
+  y = Math.abs(y)
+
+  if (x > y && x > MIN_DISTANCE) {
+    return 'h'
+  }
+
+  if (y > x && y > MIN_DISTANCE) {
+    return 'v'
+  }
+
+  return ''
+}
+
+module.exports = {
+  onRightWidthChange: onRightWidthChange,
+  onIsOpenChange: onIsOpenChange,
+  touchstart: touchstart,
+  slotTouchstart: slotTouchstart,
+  touchmove: touchmove,
+  touchend: touchend,
+  open: open,
+  close: close,
+}

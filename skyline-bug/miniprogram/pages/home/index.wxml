@@ -18,11 +18,17 @@
     </view>
   </view>
 
-  <not-found
+  <input
+    value="输入框"
+    always-embed
+    focus
+  />
+
+  <!-- <not-found
     height="{{notFoundHeight}}"
     image="{{img_note_not_found}}"
     text="暂无动态"
-  />
+  /> -->
 </page>
 
 

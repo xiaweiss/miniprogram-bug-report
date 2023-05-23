@@ -1,0 +1,99 @@
+<modal id="modal" />
+
+<page
+  navigationBarTitleText="互动"
+  background="#f5f6f8"
+  loaded="{{loaded}}"
+  refresher-enabled
+  refresher-triggered="{{refresherTriggered}}"
+>
+  <view class="first-type">
+    <view
+      class="title {{firstType === 0 ? 'active' : ''}}"
+      data-index="{{0}}"
+      bind:tap="toggleFirstType"
+    >
+      赞过
+      <view class="title-underline" />
+    </view>
+    <view
+      class="title {{firstType === 1 ? 'active' : ''}}"
+      data-index="{{1}}"
+      bind:tap="toggleFirstType"
+    >
+      评过
+      <view class="title-underline" />
+    </view>
+  </view>
+
+  <view class="type">
+    <view
+      wx:for="{{typeList}}"
+      wx:for-item="item"
+      wx:for-index="index"
+      wx:key="index"
+      class="type-item {{type === index ? 'active' : ''}}"
+      bind:tap="changeType"
+      data-index="{{index}}"
+    >
+      {{item.label}}·{{item.total}}
+    </view>
+  </view>
+
+  <!-- 笔记列表 -->
+  <list-view wx:if="{{firstType === 0}}">
+    <note-item
+      wx:for="{{typeList[type].noteList}}"
+      wx:for-item="item"
+      wx:for-index="index"
+      wx:key="uuid"
+      list-item
+      type="vote"
+      profile="{{item}}"
+      note="{{item}}"
+      index="{{index}}"
+      total="{{typeList[type].total}}"
+      show-profile
+      hide-flag
+      hide-share
+      enable-longpress
+      enable-swipe
+      bind:deleted="onNoteItemDeleted"
+    />
+  </list-view>
+
+  <list-view wx:else>
+    <note-item
+      wx:for="{{typeList[type].noteList}}"
+      wx:for-item="item"
+      wx:for-index="index"
+      wx:key="uuid"
+      list-item
+      profile="{{item}}"
+      note="{{item}}"
+      index="{{index}}"
+      total="{{typeList[type].total}}"
+      show-profile
+      hide-flag
+      hide-share
+      bind:deleted="onNoteItemDeleted"
+    />
+  </list-view>
+
+  <!-- 空列表 -->
+  <not-found
+    wx:if="{{firstType === 0 && !typeList[type].noteList.length}}"
+    height="{{notFoundHeight}}"
+    image="{{img_vote_not_found}}"
+    text="你赞过的笔记卡片会出现在这里，去为你喜欢的卡片点赞吧"
+  />
+
+  <!-- 空列表 -->
+  <not-found
+    wx:if="{{firstType === 1 && !typeList[type].noteList.length}}"
+    height="{{notFoundHeight}}"
+    image="{{img_comment_not_found}}"
+    text="你评过的笔记卡片会出现在这里，去为你喜欢的卡片评论吧"
+  />
+</page>
+

@@ -1,0 +1,14 @@
+<view class="avatar class" style="width:{{size}}px;height:{{size}}px;{{style}};">
+  <image
+    wx:if="{{src}}"
+    class="avatar-url"
+    mode="aspectFill"
+    src="{{src}}"
+    binderror="onError"
+  />
+  <image
+    wx:else
+    class="icon-avatar"
+    src="../../assets/icon/avatar.svg"
+  />
+</view>

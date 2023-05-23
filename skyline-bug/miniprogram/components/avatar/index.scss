@@ -1,0 +1,15 @@
+.avatar {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #E6E6E7;
+  border-radius: 50%;
+}
+
+.icon-avatar,
+.avatar-url {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
