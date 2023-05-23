@@ -18,11 +18,24 @@
     </view>
   </view>
 
-  <input
-    value="输入框"
-    always-embed
-    focus
-  />
+  <view class="btn-show" bind:tap="show">点击显示输入框</view>
+
+  <view wx:if="{{isShow}}">
+    <textarea
+      value="输入框"
+      bind:input="onInput"
+    />
+  </view>
+
+  <!-- hack -->
+  <!-- <view class="container {{isShow ? 'show' : ''}}">
+    <textarea
+      value="输入框"
+      bind:input="onInput"
+    />
+  </view> -->
+
+  <view>输入结果：{{text}}</view>
 
   <!-- <not-found
     height="{{notFoundHeight}}"

@@ -12,6 +12,8 @@ Page({
     notFoundHeight: 0,
     /** 触发下拉刷新 */
     refresherTriggered: false,
+    text: '',
+    isShow: false
   },
   onLoad() {
     this.setData({
@@ -33,4 +35,16 @@ Page({
     this.setData({loaded: true})
     wx.hideLoading()
   },
+
+  onInput (e) {
+    console.log('onInput', e)
+    this.setData({
+      text: e.detail.value
+    })
+  },
+  show () {
+    this.setData({
+      isShow: true
+    })
+  }
 })

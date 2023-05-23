@@ -35,3 +35,17 @@
 .time-date {
   padding-top: 6px;
 }
+
+.btn-show {
+  padding: 20px 0;
+}
+
+.container {
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+}
+
+
