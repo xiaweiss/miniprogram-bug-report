@@ -26,6 +26,7 @@
       scroll-anchoring
       scroll-y
       scroll-top="{{pageScrollTop}}"
+      scroll-with-animation="{{scrollWithAnimation}}"
       type="custom"
       bind:refresherrefresh="onPullDownRefresh"
       bind:scrolltolower="onReachBottom"

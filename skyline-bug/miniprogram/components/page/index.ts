@@ -13,9 +13,12 @@ Component({
     navigationBarBackgroundColor: { type: String, value: 'transparent' },
     navigationBarTitleText: { type: String, value: '墨问便签' },
     refresherEnabled: { type: Boolean, value: false },
+    refresherBackground: { type: String, value: '' }, // 默认值 #fff 表示透明色，如果需要白色，需要设置为 #ffffff、white
     refresherTriggered: { type: Boolean, value: false },
     scrollTop: { type: Number, value: 0 },
     supportSticky: { type: Boolean, value: false },
+    /** 在设置滚动条位置时使用动画过渡 */
+    scrollWithAnimation: { type: Boolean, value: false },
   },
   data: {
     /** 是否需要下拉刷新 */

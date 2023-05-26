@@ -13,7 +13,8 @@ Page({
     /** 触发下拉刷新 */
     refresherTriggered: false,
     text: '',
-    isShow: false
+    isShow: false,
+    scrollTop: 0
   },
   onLoad() {
     this.setData({
@@ -46,5 +47,9 @@ Page({
     this.setData({
       isShow: true
     })
+  },
+
+  scrollTo () {
+    this.setData({scrollTop: 500})
   }
 })

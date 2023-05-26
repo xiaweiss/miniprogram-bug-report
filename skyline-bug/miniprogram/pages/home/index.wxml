@@ -5,6 +5,9 @@
   loaded="{{loaded}}"
   refresher-enabled
   refresher-triggered="{{refresherTriggered}}"
+  support-sticky
+  scroll-top="{{scrollTop}}"
+  scroll-with-animation
 >
   <view class="header">
     <view class="title">
@@ -18,24 +21,33 @@
     </view>
   </view>
 
-  <view class="btn-show" bind:tap="show">点击显示输入框</view>
+  <sticky-header class="sticky-header">
+    <view class="white-view"> sticky 吸顶的 view </view>
+  </sticky-header>
 
-  <view wx:if="{{isShow}}">
-    <textarea
-      value="输入框"
-      bind:input="onInput"
-    />
+  <view class="white-view" bind:tap="scrollTo">
+    点击设置滚动 scroll-top
   </view>
 
-  <!-- hack -->
-  <!-- <view class="container {{isShow ? 'show' : ''}}">
-    <textarea
-      value="输入框"
-      bind:input="onInput"
-    />
-  </view> -->
+  <view class="text">
+    <text user-select>不要有大词崇拜
+别以为大厂的战略、拉通、对齐、复盘、赋能、沉淀、倒逼、落地……这些才是大词和黑话，其实普通人也很容易不经意的陷进去，比如：
+经常有人会问我，如何深度思考，如何建立自己的方法论，如何构建思维体系。一听就很高大上吧。今天听了一期读库六哥张立宪和梁文道的播客，发现他们也聊了这个问题，我觉得是个不错的答案：
 
-  <view>输入结果：{{text}}</view>
+梁文道：经常有人会问，“我该如何建立自己的思想体系？”或是，“我应该怎么建立自己的思维方法？”就是认为，看这么多书都是跟这人家的思考走，但是“我想要有一套自己独立的思维方式”。但是这些问题我回答不出来。为什么？因为我没有这种经验。我读几十年书，好像我们那个年代没人谈论这些问题，为什么现在突然有这么多人在为此困扰？你对这类问题是什么感受呢？
+
+张立宪：我个人的感觉，这是咱们根深蒂固的教育养成的一种习惯，叫“大词崇拜”。
+
+他崇拜这种大词，比如一说“老六是一个有自己思想体系的人”，听着特别唬人；但如果说“老六是一个知道怎么把1000字的稿子编成800字的人”，就觉得这好像没什么大不了的。
+
+但是我现在更喜欢后者。我认为所有的思想体系，所有的三观，甚至你的宗教意识、人生观，对宇宙的看法，最后不就是着落在你每天要做的事情上，以及你最后结出来的果实上吗？包括着落在酝酿结果前这一系列的耕耘和跋涉。
+
+并且我还有一个很残酷的观念，当一个人认为自己需要思想体系的时候，其实已经晚了。或者说，他并没有意识到其实他已经有自己的思想体系了，只是他不知道而已。
+
+当动不动就问对方，“我如何形成我的思想体系”的时候，其实他的思想体系已经形成了，就是“我要让别人告诉我怎么形成自己的东西”，这也是他的思想体系。
+2023年5月24日 上午 12:24</text>
+  </view>
+
 
   <!-- <not-found
     height="{{notFoundHeight}}"
