@@ -3,7 +3,8 @@
   "navigationStyle": "custom",
   "disableScroll": true,
   "usingComponents": {
-    "not-found": "../../components/not-found/index"
+    "not-found": "../../components/not-found/index",
+    "page-container": "../../components/page-container/index"
   },
   "renderer": "skyline"
 }

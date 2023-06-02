@@ -19,14 +19,6 @@
   flex-direction: column;
 }
 
-.bottom {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: env(safe-area-inset-bottom);
-  /**
-   * [skyline] position: absolute 无法跨层级定位（不支持 position: static）
-   * @see https://github.com/xiaweiss/miniprogram-bug-report/issues/42
-   */
-  width: 100vw;
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
 }

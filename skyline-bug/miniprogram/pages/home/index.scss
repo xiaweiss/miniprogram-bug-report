@@ -1,70 +1,38 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-
-.title-cn {
-  height: 29px;
-}
-
-.title-en {
-  padding-top: 11px;
-  height: 12px;
-}
-
-.time {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  font-size: 16px;
-  color: #353535;
-}
-
-.time-block {
-  width: 19px;
-  height: 6px;
-  background: #CC5656;
-}
-
-.time-week {
-  padding-top: 10px;
-}
-
-.time-date {
-  padding-top: 6px;
-}
-
-.btn-show {
-  padding: 20px 0;
-}
-
 .container {
-  visibility: hidden;
-
-  &.show {
-    visibility: visible;
-  }
-}
-
-.text {
-  padding: 0 20px;
-  line-height: 1.5;
-}
-
-.sticky-header {
-  position: sticky;
-  left: 0;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-}
-
-.white-view {
-  background-color: #fff;
+  height: 300px;
   padding: 20px;
 }
+
+.skyblue {
+  width: 100px;
+  height: 50px;
+  background-color: skyblue;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 40px;
+  padding: 0 20px;
+  margin: 10px 0;
+  border-radius: 20px;
+  background: #CC5656;
+  color: #fff;
+}
+
+.pink {
+  width: 100px;
+  height: 50px;
+  background-color: pink;
+}
+
+.green {
+  width: 100px;
+  height: 50px;
+  background-color: green;
+}
+
 
 

@@ -1,10 +1,14 @@
 .page-container {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
+
+  &.skyline {
+    position: absolute;
+  }
 }
 
 .page-container-overlay {
@@ -22,7 +26,6 @@
 }
 
 .page-container-content {
-  flex-direction: column;
   position: absolute;
   pointer-events: auto;
   background: #FFF;

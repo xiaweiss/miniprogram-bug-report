@@ -1,6 +1,6 @@
 <root-portal wx:if="{{isShow}}">
   <view
-    class="page-container"
+    class="page-container {{isSkyline ? 'skyline' : ''}}"
     style="z-index:{{zIndex}};"
   >
     <view
@@ -8,6 +8,7 @@
       class="page-container-overlay {{showing ? 'showing' : ''}}"
       style="transition-duration:{{duration}}ms;{{overlayStyle}};"
       bind:tap="{{overlayClose ? 'close' : ''}}"
+      catch:touchmove="noop"
     />
     <view
       class="page-container-content {{position}} {{showing ? 'showing' : ''}}"

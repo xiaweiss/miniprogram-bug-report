@@ -13,6 +13,8 @@
     <slot name="navigationBarLeft" />
   </nav-bar>
 
+  <slot name="top" />
+
   <block wx:if="{{loaded}}">
     <scroll-view
       class="scroll-view"
@@ -22,14 +24,18 @@
       bounce="{{false}}"
       lower-threshold="{{lowerThreshold}}"
       refresher-enabled="{{refresherEnabled}}"
+      refresher-background="{{refresherBackground}}"
       refresher-triggered="{{pageRefresherTriggered}}"
       scroll-anchoring
       scroll-y
       scroll-top="{{pageScrollTop}}"
       scroll-with-animation="{{scrollWithAnimation}}"
       type="custom"
-      bind:refresherrefresh="onPullDownRefresh"
+      bind:scroll="onPageScroll"
       bind:scrolltolower="onReachBottom"
+      bind:refresherrefresh="onRefresherRefresh"
+      bind:refresherrestore="onRefresherRestore"
+      bind:refresherabort="onRefresherAbort"
     >
       <!--
         bug: [skyline] scroll-view 内有 sticky 元素时，scroll-view 的子元素无法占满高度
@@ -41,18 +47,16 @@
       -->
       <sticky-section wx:if="{{supportSticky}}" class="scroll-view-inner">
         <slot />
+        <view wx:if="{{!enableBottom}}" class="safe-area-inset-bottom" />
       </sticky-section>
 
       <block wx:else>
         <slot />
+        <view wx:if="{{!enableBottom}}" class="safe-area-inset-bottom" />
       </block>
     </scroll-view>
 
-    <!-- 绝对定位的元素 -->
-    <view class="bottom">
-      <slot name="bottom" />
-    </view>
-
+    <slot wx:if="{{enableBottom}}" name="bottom" />
     <slot name="absolute" />
   </block>
 </view>

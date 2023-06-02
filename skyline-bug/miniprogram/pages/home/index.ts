@@ -13,8 +13,9 @@ Page({
     /** 触发下拉刷新 */
     refresherTriggered: false,
     text: '',
-    isShow: false,
-    scrollTop: 0
+    scrollTop: 0,
+    isColor: true,
+    isShow: true,
   },
   onLoad() {
     this.setData({
@@ -37,19 +38,17 @@ Page({
     wx.hideLoading()
   },
 
-  onInput (e) {
-    console.log('onInput', e)
+  toggleColor () {
+    console.log('toggleColor')
     this.setData({
-      text: e.detail.value
-    })
-  },
-  show () {
-    this.setData({
-      isShow: true
+      isColor: !this.data.isColor
     })
   },
 
-  scrollTo () {
-    this.setData({scrollTop: 500})
+  toggleShow () {
+    console.log('toggleShow')
+    this.setData({
+      isShow: !this.data.isShow
+    })
   }
 })

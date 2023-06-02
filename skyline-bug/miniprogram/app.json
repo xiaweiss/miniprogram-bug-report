@@ -20,5 +20,6 @@
   "lazyCodeLoading": "requiredComponents",
   "rendererOptions": {
     "defaultDisplayBlock": true
-  }
+  },
+  "componentFramework": "glass-easel"
 }

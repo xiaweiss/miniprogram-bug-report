@@ -1,3 +1,5 @@
+import { isSkyline } from '../../utils/index'
+
 Component({
   options: {
     pureDataPattern: /^_/,
@@ -9,7 +11,7 @@ Component({
     /** 动画时长，单位毫秒 */
     duration: { type: Number, value: 300 },
     /** z-index 层级 */
-    zIndex: { type: Number, value: 100 },
+    zIndex: { type: Number, value: 1000 },
     /** 弹出位置，可选值为 bottom center */
     position: { type: String, value: 'bottom' },
     /** 是否显示遮罩层 */
@@ -23,6 +25,7 @@ Component({
   },
   data: {
     _inited: false,
+    isSkyline: false,
     /** 组件是否展示 */
     isShow: false,
     /** 进入 */
@@ -30,7 +33,7 @@ Component({
     /** 离开 */
     leave: false,
     /** 正在展示 */
-    showing: false
+    showing: false,
   },
   observers: {
     'show' (show) {
@@ -50,6 +53,11 @@ Component({
     }
   },
   lifetimes: {
+    attached() {
+      this.setData({
+        isSkyline: isSkyline()
+      })
+    },
     ready () {
       // 小程序启动时，页面加载好之后再弹出，以便显示动画
       this.data._inited = true
