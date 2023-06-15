@@ -1,6 +1,0 @@
-{
-	"usingComponents": {
-		"child": "../child/index"
-	},
-	"renderer": "skyline"
-}

@@ -1,8 +1,0 @@
-{
-  "renderer": "skyline",
-  "usingComponents": {
-    "nav-bar": "../nav-bar/index"
-  },
-  "disableScroll": true,
-  "navigationStyle": "custom"
-}
