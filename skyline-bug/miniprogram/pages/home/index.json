@@ -1,10 +1,8 @@
 {
-  "navigationBarTitleText": "墨问早报",
   "navigationStyle": "custom",
   "disableScroll": true,
   "usingComponents": {
-    "not-found": "../../components/not-found/index",
-    "page-container": "../../components/page-container/index"
+    "note-item": "../../components/note-item/index"
   },
   "renderer": "skyline"
 }

@@ -11,8 +11,16 @@ $padding: 16px;
   width: 100vw;
   padding: 0 20px 12px;
 
+  &:last-child {
+    margin-bottom: 28px; // 40 - 12
+  }
+
   &.hide-card {
     padding-bottom: 0;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
   }
 }
 
@@ -24,20 +32,24 @@ $padding: 16px;
   border-radius: 10px;
   background: #fff;
 
-  &.has-checkbox {
-    cursor: pointer;
-  }
-
-  &.has-flag {
-    padding-top: 25px - $padding;
-  }
-
   &.hide-card {
     padding: 0;
     padding-bottom: 3px; // 16 - ((42 - 2 - 18) / 2 + 2)
     background: none;
     border-radius: 0;
     border-bottom: 0.5px solid #E8E8E8;
+  }
+
+  &.has-checkbox {
+    cursor: pointer;
+  }
+
+  &.sticky-on-top {
+    background: #EDEDED;
+  }
+
+  &.has-flag {
+    padding-top: 25px - $padding;
   }
 }
 
@@ -288,10 +300,9 @@ $padding: 16px;
   overflow: hidden;
 }
 
-// todo: 文本高亮
 // 文本高亮
-.title .highlight,
-.digest .highlight {
+.title .EM,
+.digest .EM {
   background: none;
   font-style: normal;
   color: #CC5656;
@@ -332,6 +343,7 @@ $padding: 16px;
 }
 
 .name {
+  max-width: 116px;
   padding: 0 10px;
   font-size: 12px;
   line-height: 18px;
@@ -414,28 +426,18 @@ $padding: 16px;
   display: none;
 }
 
-.vote-list {
+.note-item-on-top {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 26px;
-  border-radius: 13px;
-  background: #F5F6F8;
+  height: 100%;
+  padding: 0 10px;
+  cursor: pointer;
 }
 
-.vote-item {
-  width: 18px;
-  height: 18px;
-  margin-right: 4px;
-  opacity: 0.8;
-
-  &:first-child {
-    margin-left: 6px;
-  }
-
-  &:last-child {
-    margin-right: 6px;
-  }
+.icon-note-item-top-disable {
+  width: 12px;
+  height: 12px;
 }
 
 .share {
@@ -444,7 +446,7 @@ $padding: 16px;
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-right: $padding;
   margin-right: -$padding;
   cursor: pointer;
@@ -453,11 +455,14 @@ $padding: 16px;
 .icon-note-item-share {
   width: 11px;
   height: 13px;
-  transform: translateY(-1px);
 }
 
 .hr-before-extra {
   border-top: 0.5px solid #E8E8E8;
+
+  .sticky-on-top & {
+    border-color: #D4D4D4;
+  }
 }
 
 .extra {
@@ -518,13 +523,14 @@ $padding: 16px;
   padding: 0 15px;
   margin-left: 4px; // 24 = 20 + 4
   margin-right: 28px;
-  width: 80px;
+  width: fit-content;
   height: 34px;
   border-radius: 17px;
   background: #F8EDEC;
   font-size: 14px;
   font-weight: 500;
   color: #F55F4E;
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -540,6 +546,7 @@ $padding: 16px;
   &.small {
     width: 18px;
     height: 20px;
+    margin-right: 4px; // 总宽 22 = 18 + 4
   }
 }
 
@@ -551,6 +558,7 @@ $padding: 16px;
   &.small {
     width: 15px;
     height: 16px;
+    margin-right: 7px; // 总宽 22 = 15 + 7
   }
 }
 
@@ -604,6 +612,10 @@ $padding: 16px;
   height: 14px;
 }
 
+.icon-top {
+  width: 18px;
+  height: 18px;
+}
 
 .menu-cover {
   position: absolute;
@@ -636,6 +648,7 @@ $padding: 16px;
   border-top: 0.5px solid rgba(0, 0, 0, 0.1);
   background: #fff;
   font-size: 15px;
+  font-weight: 500;
   color: #404040;
 
   &:first-child {
@@ -648,7 +661,6 @@ $padding: 16px;
 }
 
 .icon-copy {
-  width: 21px;
-  height: 21px;
-  transform: translateX(1px);
+  width: 18px;
+  height: 18px;
 }

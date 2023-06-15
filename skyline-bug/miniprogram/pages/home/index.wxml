@@ -1,31 +1,28 @@
 <modal id="modal" />
 
 <page
-  navigationBarTitleText="墨问便签"
-  loaded="{{loaded}}"
+  background="#f5f6f8"
+  lower-threshold="215"
   refresher-enabled
   refresher-triggered="{{refresherTriggered}}"
-  scroll-top="{{scrollTop}}"
-  scroll-with-animation
 >
-  <!-- <not-found
-    height="{{notFoundHeight}}"
-    image="{{img_note_not_found}}"
-    text="暂无动态"
-  /> -->
+  <list-view>
+    <note-item
+      wx:for="{{noteList}}"
+      wx:for-item="item"
+      wx:for-index="index"
+      wx:key="uuid"
+      list-item
+      note="{{item}}"
+      index="{{index}}"
+      total="{{total}}"
+      enable-longpress
+      enable-sticky-on-top
+      enable-swipe
+      show-tag
+      bind:changed="onNoteItemChanged"
+      bind:deleted="onNoteItemDeleted"
+      bind:stickyOnTop="onNoteItemStickyOnTop"
+    />
+  </list-view>
 </page>
-
-<!-- 自定义组件 page-container -->
-<page-container show>
-  <view class="container">
-    <view></view>root-portal 内部无法设置样式
-    <view class="button" bind:tap="toggleColor">点击改变下方色块颜色</view>
-    <view class="{{isColor ? 'skyblue' : 'pink'}}">色块{{isColor ? 'skyblue' : 'pink'}}</view>
-
-    <view class="button" bind:tap="toggleShow">点击设置下方元素是否隐藏</view>
-    <view wx:if="{{isShow}}" class="green">色块 green</view>
-
-  </view>
-</page-container>
-
-

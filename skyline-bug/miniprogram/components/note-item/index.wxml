@@ -1,7 +1,9 @@
 <wxs module="dot" src="./dot.wxs"></wxs>
+<wxs module="em" src="./em.wxs"></wxs>
 
 <template name="extra">
   <view class="extra {{type === 'image' ? 'is-type-image' : ''}}">
+    <!-- 左侧 -->
     <view class="comment" bind:tap="comment">
       <image class="icon-comment" src="../../assets/icon/note-item-comment.svg" />
       <view>{{note.noteStat.comment}}</view>
@@ -11,6 +13,10 @@
       <view>{{note.noteStat.duv}}</view>
     </view>
     <view class="extra-placeholder" />
+    <!-- 右侧 -->
+    <view wx:if="{{enableStickyOnTop && note.stickyOnTop}}" class="note-item-on-top">
+      <image class="icon-note-item-top-disable" src="../../assets/icon/note-item-top-disable.svg" />
+    </view>
     <view wx:if="{{!hideShare}}" class="share" catch:tap="share">
       <image class="icon-note-item-share" src="../../assets/icon/note-item-share-gray.svg" />
     </view>
@@ -20,8 +26,8 @@
 
 <template name="note-item">
   <view
-    class="note-item {{hideCard ? 'hide-card' : ''}} {{checkbox ? 'has-checkbox' : ''}} {{(!hideFlag && note.noteFlag.publicStatus === 1) || (!hideFlag && note.noteFlag.publicStatus === 2) || (!hideFlag && note.noteFlag.auditTips && note.noteFlag.auditStatus === 98) || (showRiskFlag && note.noteFlag.auditStatus >= 96) || (showRiskFlag && note.noteFlag.auditStatus === 32) || isRefUpdated ? 'has-flag' : ''}}"
-    capture-catch:tap="{{checkbox ? 'toggleSelect' : ''}}"
+    class="note-item {{hideCard ? 'hide-card' : ''}} {{enableSelect ? 'has-checkbox' : ''}} {{enableStickyOnTop && note.stickyOnTop ? 'sticky-on-top' : ''}} {{(!hideFlag && note.noteFlag.publicStatus === 1) || (!hideFlag && note.noteFlag.publicStatus === 2) || (!hideFlag && note.noteFlag.auditTips && note.noteFlag.auditStatus === 98) || (showRiskFlag && note.noteFlag.auditStatus >= 96) || (showRiskFlag && note.noteFlag.auditStatus === 32) || isRefUpdated ? 'has-flag' : ''}}"
+    capture-catch:tap="{{enableSelect ? 'toggleSelect' : ''}}"
     catch:touchmove="{{isMenuShow ? 'noop' : ''}}"
     bind:longpress="{{enableLongpress ? 'showMenu' : ''}}"
   >
@@ -32,7 +38,7 @@
     <view wx:elif="{{showRiskFlag && note.noteFlag.auditStatus === 32}}" class="flag orange">审核中</view>
     <view wx:elif="{{isRefUpdated}}" class="flag orange">合集有更新</view>
 
-    <view wx:if="{{checkbox}}" class="checkbox {{isIOS ? 'ios' : ''}} {{note.selected ? 'checked' : ''}}">
+    <view wx:if="{{enableSelect}}" class="checkbox {{isIOS ? 'ios' : ''}} {{note.selected ? 'checked' : ''}}">
       <image wx:if="{{note.selected}}" class="icon-check" src="../../assets/icon/note-item-check.svg" />
     </view>
 
@@ -110,7 +116,9 @@
             </view>
           </block>
         </view>
-        <template wx:if="{{showExtra}}" is="extra" data="{{note,type,hideShare}}" />
+        <block wx:if="{{showExtra}}">
+          <template is="extra" data="{{type,note,hideShare,enableStickyOnTop}}" />
+        </block>
       </block>
 
       <view class="content-row" catch:tap="goToNote">
@@ -144,14 +152,25 @@
           class="content"
         >
           <!-- 标题 1 行 -->
-          <text wx:if="{{title}}" class="title">{{title}}</text>
+          <text wx:if="{{title}}" class="title" space="nbsp">
+            <block wx:if="{{enableEm}}">
+              <text wx:for="{{em(title)}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="{{item.nodeName === 'EM' ? 'EM' : ''}}" space="nbsp">{{item.textContent}}</text>
+            </block>
+            <block wx:else>{{title}}</block>
+          </text>
           <!-- 摘要 1 行 - 3 行 -->
           <text
             wx:if="{{digest}}"
             class="digest"
             max-lines="{{ type === 'image' ? (2 - (title ? 1 : 0)) : (3 - (title ? 1 : 0) - (audioTime ? 1 : 0)) }}"
             style="{{isSkyline ? 'white-space:nowrap;' : ('-webkit-line-clamp:' + (type === 'image' ? (2 - (title ? 1 : 0)) : (3 - (title ? 1 : 0) - (audioTime ? 1 : 0))))}};"
-          >{{digest}}</text>
+            space="nbsp"
+          >
+            <block wx:if="{{enableEm}}">
+              <text wx:for="{{em(digest)}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="{{item.nodeName === 'EM' ? 'EM' : ''}}" space="nbsp">{{item.textContent}}</text>
+            </block>
+            <block wx:else>{{digest}}</block>
+          </text>
           <!-- 语音时长 1 行 -->
           <text wx:if="{{audioTime && note.noteFlag.hasCover}}" class="audio has-cover">[拜年语音] {{audioTime}}</text>
           <text wx:elif="{{audioTime}}" class="audio">[语音] {{audioTime}}</text>
@@ -166,7 +185,7 @@
         <view
           wx:if="{{showProfile}}"
           class="profile"
-          style="max-width: calc(100% - {{80 + (hideShare ? 0 : 16) + (type === 'vote' ? 96 : 0)}}px);"
+          style="max-width: calc(100% - {{80 + (hideShare ? 0 : 16) + (type === 'favor' ? 96 : 0)}}px);"
           catch:tap="goToPeople"
         >
           <avatar class="avatar" size="18" avatar="{{profile.avatar}}" />
@@ -177,7 +196,7 @@
 
         <!-- 中间位置，占满 -->
         <view
-          wx:if="{{!isGuest && noteTags.length > 0}}"
+          wx:if="{{showTag && noteTags.length > 0}}"
           class="tag"
         >
           <image wx:if="{{noteTags[0].id === '-4'}}" class="icon-tag" src="../../assets/icon/tag-green.svg" />
@@ -210,7 +229,7 @@
         <!-- 右边位置 -->
         <block wx:if="{{type === 'audio' && audioTime}}">
           <view
-            class="play {{(!checkbox && !showExtra) ? 'has-after' : ''}}"
+            class="play {{(!enableSelect && !showExtra) ? 'has-after' : ''}}"
             catch:tap="{{playing ? 'pause' : 'play'}}"
           >
             <image
@@ -224,15 +243,12 @@
           </view>
         </block>
 
-        <view wx:elif="{{type === 'vote'}}" class="vote-list">
-          <image class="vote-item" wx:if="{{note.noteFlag.hadThumb}}" src="../../assets/img/voted-1@3x.png" />
-          <image class="vote-item" wx:if="{{note.noteFlag.hadCheer}}" src="../../assets/img/voted-2@3x.png" />
-          <image class="vote-item" wx:if="{{note.noteFlag.hadLike}}" src="../../assets/img/voted-3@3x.png" />
-          <image class="vote-item" wx:if="{{note.noteFlag.hadAgree}}" src="../../assets/img/voted-4@3x.png" />
+        <view wx:if="{{enableStickyOnTop && note.stickyOnTop && !showExtra}}" class="note-item-on-top">
+          <image class="icon-note-item-top-disable" src="../../assets/icon/note-item-top-disable.svg" />
         </view>
 
         <view
-          wx:if="{{!checkbox && !showExtra && !hideShare}}"
+          wx:if="{{!enableSelect && !showExtra && !hideShare}}"
           class="share"
           catch:tap="share"
         >
@@ -242,7 +258,7 @@
 
       <block wx:if="{{showExtra && type !== 'image'}}">
         <view class="hr-before-extra" />
-        <template is="extra" data="{{note,type,hideShare}}" />
+        <template is="extra" data="{{type,note,hideShare,enableStickyOnTop}}" />
       </block>
     </view>
   </view>
@@ -254,27 +270,46 @@
   class="note-item-container {{hideCard ? 'hide-card' : ''}}"
   hover="{{hideCard}}"
   disabled="{{!enableSwipe}}"
-  rightWidth="{{confirmDelShow ? 112 : (type === 'vote' ? 74 : 186)}}"
+  rightWidth="{{rightWidth}}"
   bind:close="onSwipeActionClose"
   catch:tap="{{hideCard ? 'goToNote' : 'noop'}}"
 >
   <template
     is="note-item"
-    data="{{type,profile,note,index,total,checkbox,showExtra,showRiskFlag,showProfile,hideFlag,hideShare,hideCard,dateType,isRefUpdated,enableLongpress,isSkyline,isIOS,isPC,isGuest,isOnlyAudio,imageUrl,imageList,audioTime,title,digest,noteDate,isBottom,noteTags,playing,playedIndex,swiperIndex,swiperHeight,isMenuShow}}"
+    data="{{type,profile,note,index,total,showTag,showExtra,showRiskFlag,showProfile,hideFlag,hideShare,hideCard,dateType,isRefUpdated,enableLongpress,enableStickyOnTop,enableEm,enableSelect,isSkyline,isIOS,isPC,isGuest,isOnlyAudio,imageUrl,imageList,audioTime,title,digest,noteDate,isBottom,noteTags,playing,playedIndex,swiperIndex,swiperHeight,isMenuShow}}"
   />
 
   <!-- 右滑菜单 -->
   <view class="right" slot="right">
-    <block wx:if="{{type === 'vote'}}">
+    <block wx:if="{{type === 'favor'}}">
       <!-- 二次确认取消点赞 -->
       <block wx:if="{{confirmDelShow}}">
-        <view class="confirm-del-button" bind:tap="confirmClearVote">
+        <view class="confirm-del-button" bind:tap="confirmClearFavor">
           <image class="icon-clear small" src="../../assets/icon/swipe-action-clear.svg" />
-          <view>清除</view>
+          <view>取消赞</view>
         </view>
       </block>
 
       <block wx:else>
+        <view class="action-button del-button" bind:tap="del">
+          <image class="icon-clear" src="../../assets/icon/swipe-action-clear.svg" />
+        </view>
+      </block>
+    </block>
+
+    <block wx:elif="{{type === 'collect'}}">
+      <!-- 二次确认取消收藏 -->
+      <block wx:if="{{confirmDelShow}}">
+        <view class="confirm-del-button" bind:tap="confirmClearCollect">
+          <image class="icon-clear small" src="../../assets/icon/swipe-action-clear.svg" />
+          <view>取消收藏</view>
+        </view>
+      </block>
+
+      <block wx:else>
+        <view class="action-button tag-button" bind:tap="goToAddTag">
+          <image class="icon-tag-green" src="../../assets/icon/swipe-action-tag-green.svg" />
+        </view>
         <view class="action-button del-button" bind:tap="del">
           <image class="icon-clear" src="../../assets/icon/swipe-action-clear.svg" />
         </view>
@@ -294,12 +329,12 @@
         <view class="action-button tag-button" bind:tap="goToAddTag">
           <image class="icon-tag-green" src="../../assets/icon/swipe-action-tag-green.svg" />
         </view>
-        <view class="action-button privacy-button" bind:tap="togglePrivacy">
+        <view wx:if="{{!isGuest}}" class="action-button privacy-button" bind:tap="togglePrivacy">
           <image wx:if="{{note.noteFlag.publicStatus === 0}}" class="icon-lock" src="../../assets/icon/swipe-action-lock.svg" />
           <image wx:elif="{{note.noteFlag.publicStatus === 1}}" class="icon-unlock" src="../../assets/icon/swipe-action-unlock.svg" />
           <image wx:elif="{{note.noteFlag.publicStatus === 2}}" class="icon-half-lock" src="../../assets/icon/swipe-action-half-lock.svg" />
         </view>
-        <view class="action-button del-button" bind:tap="del">
+        <view wx:if="{{!isGuest}}" class="action-button del-button" bind:tap="del">
           <image class="icon-del" src="../../assets/icon/swipe-action-del.svg" />
         </view>
       </block>
@@ -317,11 +352,23 @@
   >
     <template
       is="note-item"
-      data="{{type,profile,note,index,total,checkbox,showExtra,showRiskFlag,showProfile,hideFlag,hideShare,hideCard,dateType,isRefUpdated,enableLongpress,isSkyline,isIOS,isPC,isGuest,isOnlyAudio,imageUrl,imageList,audioTime,title,digest,noteDate,isBottom,noteTags,playing,playedIndex,swiperIndex,swiperHeight,isMenuShow}}"
+      data="{{type,profile,note,index,total,showTag,showExtra,showRiskFlag,showProfile,hideFlag,hideShare,hideCard,dateType,isRefUpdated,enableLongpress,enableStickyOnTop,enableEm,enableSelect,isSkyline,isIOS,isPC,isGuest,isOnlyAudio,imageUrl,imageList,audioTime,title,digest,noteDate,isBottom,noteTags,playing,playedIndex,swiperIndex,swiperHeight,isMenuShow}}"
     />
   </view>
   <view class="menu" style="{{menuStyle}}" bind:tap="closeMenu">
-    <block wx:if="{{type === 'vote'}}">
+    <!-- 收藏 -->
+    <block wx:if="{{type === 'collect'}}">
+      <view
+        wx:if="{{enableStickyOnTop}}"
+        class="menu-item"
+        hover-class="menu-item-active"
+        hover-start-time="0"
+        hover-stay-time="0"
+        bind:tap="toggleStickyOnTop"
+      >
+        <view>{{note.stickyOnTop ? '取消置顶' : '置顶'}}</view>
+        <image class="icon-top" src="../../assets/icon/note-item-top.svg" />
+      </view>
       <view
         class="menu-item"
         hover-class="menu-item-active"
@@ -339,32 +386,23 @@
         hover-stay-time="0"
         bind:tap="delInMenu"
       >
-        <view>清除</view>
+        <view>取消收藏</view>
         <image class="icon-clear" src="../../assets/icon/swipe-action-clear.svg" />
       </view>
     </block>
-    <block wx:else>
+
+    <!-- 点赞 -->
+    <block wx:elif="{{type === 'favor'}}">
       <view
+        wx:if="{{enableStickyOnTop}}"
         class="menu-item"
         hover-class="menu-item-active"
         hover-start-time="0"
         hover-stay-time="0"
-        bind:tap="goToAddTag"
+        bind:tap="toggleStickyOnTop"
       >
-        <view>标签</view>
-        <image class="icon-tag-green" src="../../assets/icon/swipe-action-tag-green.svg" />
-      </view>
-      <view
-        class="menu-item"
-        hover-class="menu-item-active"
-        hover-start-time="0"
-        hover-stay-time="0"
-        bind:tap="togglePrivacy"
-      >
-        <view>公开</view>
-        <image wx:if="{{note.noteFlag.publicStatus === 0}}" class="icon-lock" src="../../assets/icon/swipe-action-lock.svg" />
-        <image wx:elif="{{note.noteFlag.publicStatus === 1}}" class="icon-unlock" src="../../assets/icon/swipe-action-unlock.svg" />
-        <image wx:elif="{{note.noteFlag.publicStatus === 2}}" class="icon-half-lock" src="../../assets/icon/swipe-action-half-lock.svg" />
+        <view>{{note.stickyOnTop ? '取消置顶' : '置顶'}}</view>
+        <image class="icon-top" src="../../assets/icon/note-item-top.svg" />
       </view>
       <view
         class="menu-item"
@@ -377,6 +415,65 @@
         <image class="icon-copy" src="../../assets/icon/note-item-copy.svg" />
       </view>
       <view
+        class="menu-item"
+        hover-class="menu-item-active"
+        hover-start-time="0"
+        hover-stay-time="0"
+        bind:tap="delInMenu"
+      >
+        <view>取消赞</view>
+        <image class="icon-clear" src="../../assets/icon/swipe-action-clear.svg" />
+      </view>
+    </block>
+
+    <!-- 笔记 -->
+    <block wx:else>
+      <view
+        class="menu-item"
+        hover-class="menu-item-active"
+        hover-start-time="0"
+        hover-stay-time="0"
+        bind:tap="goToAddTag"
+      >
+        <view>标签</view>
+        <image class="icon-tag-green" src="../../assets/icon/swipe-action-tag-green.svg" />
+      </view>
+      <view
+        wx:if="{{!isGuest}}"
+        class="menu-item"
+        hover-class="menu-item-active"
+        hover-start-time="0"
+        hover-stay-time="0"
+        bind:tap="togglePrivacy"
+      >
+        <view>公开</view>
+        <image wx:if="{{note.noteFlag.publicStatus === 0}}" class="icon-lock" src="../../assets/icon/swipe-action-lock.svg" />
+        <image wx:elif="{{note.noteFlag.publicStatus === 1}}" class="icon-unlock" src="../../assets/icon/swipe-action-unlock.svg" />
+        <image wx:elif="{{note.noteFlag.publicStatus === 2}}" class="icon-half-lock" src="../../assets/icon/swipe-action-half-lock.svg" />
+      </view>
+      <view
+        wx:if="{{enableStickyOnTop}}"
+        class="menu-item"
+        hover-class="menu-item-active"
+        hover-start-time="0"
+        hover-stay-time="0"
+        bind:tap="toggleStickyOnTop"
+      >
+        <view>{{note.stickyOnTop ? '取消置顶' : '置顶'}}</view>
+        <image class="icon-top" src="../../assets/icon/note-item-top.svg" />
+      </view>
+      <view
+        class="menu-item"
+        hover-class="menu-item-active"
+        hover-start-time="0"
+        hover-stay-time="0"
+        bind:tap="copy"
+        >
+        <view>复制</view>
+        <image class="icon-copy" src="../../assets/icon/note-item-copy.svg" />
+      </view>
+      <view
+        wx:if="{{!isGuest}}"
         class="menu-item"
         hover-class="menu-item-active"
         hover-start-time="0"

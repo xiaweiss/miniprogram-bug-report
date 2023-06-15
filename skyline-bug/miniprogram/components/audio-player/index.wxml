@@ -1,0 +1,53 @@
+<view
+  class="audio-player {{colorMode}}"
+  data-uuid="{{uuid}}"
+  data-src="{{src}}"
+  data-duration="{{duration}}"
+  catch:tap="noop"
+>
+  <view class="audio">
+    <view
+      class="play"
+      bind:tap="{{playing ? 'pause' : 'play'}}"
+    >
+      <block wx:if="{{colorMode === 'red'}}">
+        <image
+          class="icon-pause {{playing ? 'show' : 'hide'}}"
+          src="../../assets/icon/pause-white.svg"
+        />
+        <image
+          class="icon-play {{playing ? 'hide' : 'show'}}"
+          src="../../assets/icon/play-white.svg"
+        />
+      </block>
+      <block wx:else>
+        <image
+          class="icon-pause {{playing ? 'show' : 'hide'}}"
+          src="../../assets/icon/pause.svg"
+        />
+        <image
+          class="icon-play {{playing ? 'hide' : 'show'}}"
+          src="../../assets/icon/play.svg"
+        />
+      </block>
+
+      <!-- 扩大点击区域 -->
+      <view class="increase-area" />
+    </view>
+
+    <view class="current">{{currentTime}}</view>
+
+    <slider
+      class="progress"
+      active-color="{{colorMode === 'red' ? '#fff' : '#B9BDC2'}}"
+      background-color="{{colorMode === 'red' ? '#fff' : '#B9BDC2'}}"
+      block-size="18"
+      value="{{progressTemp || progress}}"
+      disabled="{{!duration}}"
+      bindchange="progressChange"
+      bindchanging="progressChanging"
+    />
+
+    <view class="duration">{{durationTime}}</view>
+  </view>
+</view>
