@@ -19,7 +19,9 @@
   "style": "v2",
   "lazyCodeLoading": "requiredComponents",
   "rendererOptions": {
-    "defaultDisplayBlock": true
+    "skyline": {
+      "defaultDisplayBlock": true
+    }
   },
   "componentFramework": "glass-easel"
 }

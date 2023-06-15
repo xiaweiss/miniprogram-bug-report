@@ -1,6 +1,0 @@
-.note {
-  box-sizing: border-box;
-  min-height: 100vh;
-  padding: 0 20px;
-  line-height: 30px;
-}

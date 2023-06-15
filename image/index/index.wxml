@@ -1,8 +1,0 @@
-<view class="intro">本地图片带 query 安卓无法展示</view>
-
-<view class="intro">图片地址：xxx.gif，正常展示</view>
-<image class="image" src="../assets/smile.gif" />
-
-<view class="intro">图片地址：xxx.gif?foo 安卓无法展示图片</view>
-
-<image class="image" src="../assets/smile.gif?foo" />

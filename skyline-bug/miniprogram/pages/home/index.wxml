@@ -13,8 +13,6 @@
     image="{{img_note_not_found}}"
     text="暂无动态"
   /> -->
-
-  
 </page>
 
 <!-- 自定义组件 page-container -->

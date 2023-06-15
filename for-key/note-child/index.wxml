@@ -1,1 +1,0 @@
-<view class="note">笔记内容:{{content}}</view>

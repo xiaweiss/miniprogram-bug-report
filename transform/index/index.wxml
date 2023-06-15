@@ -1,5 +1,0 @@
-<view class="content {{isTransform ? 'transform' : ''}}">
-  
-</view>
-
-<view class="button" bind:tap="toggleTransform">点击开关 transform </view>
