@@ -150,9 +150,9 @@ Component({
          * @see: https://github.com/xiaweiss/miniprogram-bug-report/issues/83
          * @hack: 滚动到顶部后，延时 100 ms 再执行下拉刷新
          */
-        setTimeout(() => {
+        // setTimeout(() => {
           this.setData({pageRefresherTriggered: true})
-        }, 100)
+        // }, 100)
       }
     },
     async stopPullDownRefresh () {

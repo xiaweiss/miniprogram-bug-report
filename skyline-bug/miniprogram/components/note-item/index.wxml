@@ -50,7 +50,6 @@
           wx:if="{{swiperHeight}}"
           class="swiper-container"
           style="height:{{swiperHeight}}px;"
-          catch:tap="goToNote"
         >
           <block wx:if="{{note.noteImage.length === 1}}">
             <image
@@ -121,7 +120,7 @@
         </block>
       </block>
 
-      <view class="content-row" catch:tap="goToNote">
+      <view class="content-row">
         <block wx:if="{{type !== 'image'}}">
           <!-- 笔记卡片合集 -->
           <view
@@ -272,7 +271,6 @@
   disabled="{{!enableSwipe}}"
   rightWidth="{{rightWidth}}"
   bind:close="onSwipeActionClose"
-  catch:tap="{{hideCard ? 'goToNote' : 'noop'}}"
 >
   <template
     is="note-item"

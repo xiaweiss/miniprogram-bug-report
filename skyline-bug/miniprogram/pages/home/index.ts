@@ -80,4 +80,9 @@ Page({
       if (page === 1) this.setData({refresherTriggered: false})
     }
   },
+
+  startPullDownRefresh () {
+    console.log('startPullDownRefresh')
+    this.setData({refresherTriggered: true})
+  }
 })

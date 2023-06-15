@@ -20,9 +20,7 @@
       enable-sticky-on-top
       enable-swipe
       show-tag
-      bind:changed="onNoteItemChanged"
-      bind:deleted="onNoteItemDeleted"
-      bind:stickyOnTop="onNoteItemStickyOnTop"
+      bind:tap="startPullDownRefresh"
     />
   </list-view>
 </page>
