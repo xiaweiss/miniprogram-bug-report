@@ -1,4 +1,4 @@
-import { arrayUniqId } from '../../utils/index'
+import { arrayUniqId, saveImageToPhotosAlbum, wxToPromise } from '../../utils/index'
 import { noteMine } from './noteMine'
 
 Page({
@@ -84,5 +84,9 @@ Page({
   startPullDownRefresh () {
     console.log('startPullDownRefresh')
     this.setData({refresherTriggered: true})
+  },
+
+  async saveToPhoto () {
+    await saveImageToPhotosAlbum({filePath: 'assets/img/zan.png'})
   }
 })

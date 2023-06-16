@@ -8,8 +8,8 @@
   support-sticky
 >
   <sticky-header class="sticky-header">
-    <view style="background: skyblue; height: 50px">
-      sticky 定位的元素
+    <view class="header" bind:tap="saveToPhoto">
+      sticky 定位的元素, 点击它保存照片到相册
     </view>
   </sticky-header>
 
