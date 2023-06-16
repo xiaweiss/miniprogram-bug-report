@@ -77,7 +77,7 @@ Page({
     } finally {
       this.setData({loaded: true})
       this.data._loading = false
-      if (page === 1) this.setData({refresherTriggered: false})
+      // if (page === 1) this.setData({refresherTriggered: false})
     }
   },
 

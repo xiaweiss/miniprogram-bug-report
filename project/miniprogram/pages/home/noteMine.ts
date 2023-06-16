@@ -22,6 +22,6 @@ export const noteMine = (config: {paging: {page: number, size: number}}) => {
       }
 
       resolve(data)
-    }, 100)
+    }, 1000)
   })
 }

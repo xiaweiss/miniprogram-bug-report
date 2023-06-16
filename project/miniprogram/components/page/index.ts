@@ -91,9 +91,9 @@ Component({
        * @see: https://github.com/xiaweiss/miniprogram-bug-report/issues/78
        * @hack: 监听下拉刷新的状态、滚动状态，当触发滚动时，关闭下拉刷新
        */
-      if (this.data.pageRefresherTriggered) {
-        this.setData({pageRefresherTriggered: false})
-      }
+      // if (this.data.pageRefresherTriggered) {
+      //   this.setData({pageRefresherTriggered: false})
+      // }
     },
     /**
      * 滚动到底部时触发

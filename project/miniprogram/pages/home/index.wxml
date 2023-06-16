@@ -5,7 +5,14 @@
   lower-threshold="215"
   refresher-enabled
   refresher-triggered="{{refresherTriggered}}"
+  support-sticky
 >
+  <sticky-header class="sticky-header">
+    <view style="background: skyblue; height: 50px">
+      sticky 定位的元素
+    </view>
+  </sticky-header>
+
   <list-view>
     <note-item
       wx:for="{{noteList}}"
