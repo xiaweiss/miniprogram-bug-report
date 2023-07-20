@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "nav-bar": "../nav-bar/index"
+    "nav-bar": "../nav-bar"
   }
 }

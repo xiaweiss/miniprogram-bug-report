@@ -85,15 +85,6 @@ Component({
       if (typeof page.onPageScroll === 'function') {
         page.onPageScroll(e.detail)
       }
-
-      /**
-       * @bug: [android] scroll-view 内的 sticky 定位的元素，下拉刷新结束后，有概率无法回顶部
-       * @see: https://github.com/xiaweiss/miniprogram-bug-report/issues/78
-       * @hack: 监听下拉刷新的状态、滚动状态，当触发滚动时，关闭下拉刷新
-       */
-      // if (this.data.pageRefresherTriggered) {
-      //   this.setData({pageRefresherTriggered: false})
-      // }
     },
     /**
      * 滚动到底部时触发
@@ -110,7 +101,11 @@ Component({
     onRefresherRefresh () {
       this.data._refreshStartTime = Date.now()
       this.data.pageRefresherTriggered = true
-      getPage().onPullDownRefresh()
+
+      const page = getPage()
+      if (typeof page.onPullDownRefresh === 'function') {
+        page.onPullDownRefresh()
+      }
     },
     /**
      * 自定义下拉刷新被复位
@@ -150,9 +145,9 @@ Component({
          * @see: https://github.com/xiaweiss/miniprogram-bug-report/issues/83
          * @hack: 滚动到顶部后，延时 100 ms 再执行下拉刷新
          */
-        // setTimeout(() => {
+        setTimeout(() => {
           this.setData({pageRefresherTriggered: true})
-        // }, 100)
+        }, 100)
       }
     },
     async stopPullDownRefresh () {

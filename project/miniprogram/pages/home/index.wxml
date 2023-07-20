@@ -5,29 +5,10 @@
   lower-threshold="215"
   refresher-enabled
   refresher-triggered="{{refresherTriggered}}"
-  support-sticky
 >
-  <sticky-header class="sticky-header">
-    <view class="header" bind:tap="saveToPhoto">
-      sticky 定位的元素, 点击它保存照片到相册
-    </view>
-  </sticky-header>
-
-  <list-view>
-    <note-item
-      wx:for="{{noteList}}"
-      wx:for-item="item"
-      wx:for-index="index"
-      wx:key="uuid"
-      list-item
-      note="{{item}}"
-      index="{{index}}"
-      total="{{total}}"
-      enable-longpress
-      enable-sticky-on-top
-      enable-swipe
-      show-tag
-      bind:tap="startPullDownRefresh"
-    />
-  </list-view>
+  <view
+    class="box"
+    bind:tap="onTap"
+    bind:longpress="onLongPress"
+  />
 </page>

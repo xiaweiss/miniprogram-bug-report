@@ -22,6 +22,8 @@ Component({
     overlayStyle: { type: String, value: '' },
     /** 自定义弹出层样式 */
     customStyle: { type: String, value: '' },
+    /** 系统主题 light、dark */
+    theme: { type: String, value: 'light' },
   },
   data: {
     _inited: false,

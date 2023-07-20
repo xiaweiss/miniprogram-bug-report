@@ -2,7 +2,6 @@
   "navigationStyle": "custom",
   "disableScroll": true,
   "usingComponents": {
-    "note-item": "../../components/note-item/index"
   },
   "renderer": "skyline"
 }

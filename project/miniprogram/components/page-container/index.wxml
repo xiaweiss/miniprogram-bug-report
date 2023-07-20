@@ -1,6 +1,6 @@
 <root-portal wx:if="{{isShow}}">
   <view
-    class="page-container {{isSkyline ? 'skyline' : ''}}"
+    class="page-container theme-{{theme}} {{isSkyline ? 'skyline' : ''}}"
     style="z-index:{{zIndex}};"
   >
     <view
