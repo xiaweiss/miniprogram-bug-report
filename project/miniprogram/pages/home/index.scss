@@ -1,6 +1,18 @@
 .box {
+  position: relative;
   width: 200px;
-  height: 200px;
+  height: 100px;
   margin: 0 auto;
-  background: skyblue;
+  border: 2px solid skyblue;
+}
+
+.text {
+  background: pink;
+  display: block;
+  min-height: 100%;
+  font-size: 15px;
+  line-height: 21px;
+  color: #333;
+  letter-spacing: 0.6px;
+  text-align: justify;
 }

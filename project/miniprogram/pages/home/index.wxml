@@ -10,5 +10,8 @@
     class="box"
     bind:tap="onTap"
     bind:longpress="onLongPress"
-  />
+  >
+    <!-- 定位，保证优先展示最后面的内容 -->
+    <view class="text" user-select>文字文字</view>
+  </view>
 </page>
