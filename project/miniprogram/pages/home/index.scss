@@ -1,9 +1,18 @@
-.box {
+.comment-html {
   position: relative;
   width: 200px;
   height: 100px;
   margin: 0 auto;
   border: 2px solid skyblue;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: justify;
+  word-break: break-word;
+}
+
+.reply-to-name {
+  font-weight: 500;
+  color: #57708C;
 }
 
 .text {

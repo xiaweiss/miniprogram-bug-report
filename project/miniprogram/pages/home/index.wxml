@@ -7,11 +7,18 @@
   refresher-triggered="{{refresherTriggered}}"
 >
   <view
-    class="box"
-    bind:tap="onTap"
-    bind:longpress="onLongPress"
+    class="comment-html"
   >
-    <!-- 定位，保证优先展示最后面的内容 -->
-    <view class="text" user-select>文字文字</view>
+    <view class="P">
+      <text>回复 <text class="reply-to-name">夏味</text>：<text>我同时用QQ音乐和网易云音乐，版权互补</text></text>
+    </view>
+  </view>
+
+  <view
+    class="comment-html"
+  >
+    <view class="P">
+      <text>回复 <text class="reply-to-name">夏味</text>：<text>单行文字</text></text>
+    </view>
   </view>
 </page>
