@@ -7,18 +7,9 @@
   refresher-triggered="{{refresherTriggered}}"
 >
   <view
-    class="comment-html"
+    class="swiper-item"
   >
-    <view class="P">
-      <text>回复 <text class="reply-to-name">夏味</text>：<text>我同时用QQ音乐和网易云音乐，版权互补</text></text>
-    </view>
-  </view>
-
-  <view
-    class="comment-html"
-  >
-    <view class="P">
-      <text>回复 <text class="reply-to-name">夏味</text>：<text>单行文字</text></text>
-    </view>
+    <image mode="aspectFill" class="swiper-image-bg" src="{{url}}" />
+    <image mode="aspectFit" class="swiper-image" src="{{url}}" />
   </view>
 </page>

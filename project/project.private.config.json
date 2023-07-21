@@ -3,6 +3,7 @@
   "libVersion": "2.33.0",
   "setting": {
     "skylineRenderEnable": true,
-    "compileHotReLoad": true
+    "compileHotReLoad": true,
+    "urlCheck": false
   }
 }
