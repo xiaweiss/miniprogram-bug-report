@@ -21,7 +21,7 @@
       enable-back-to-top
       enable-flex
       enhanced
-      bounces="{{false}}"
+      bounces="{{bounces}}"
       lower-threshold="{{lowerThreshold}}"
       refresher-enabled="{{refresherEnabled}}"
       refresher-background="{{refresherBackground}}"

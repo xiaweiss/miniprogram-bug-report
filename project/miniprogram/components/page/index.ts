@@ -8,6 +8,7 @@ Component({
   },
   properties: {
     background: { type: String, value: '#fff' },
+    bounces: { type: Boolean, value: true },
     loaded: { type: Boolean, value: true },
     lowerThreshold: { type: Number, value: 50 },
     navigationBarBackgroundColor: { type: String, value: 'transparent' },

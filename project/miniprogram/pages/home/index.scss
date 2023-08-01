@@ -1,13 +1,12 @@
-.P {
-  display: block;
-  min-height: 25.6px; // line-height
-  margin: 0;
-  font-size: 16px;
-  line-height: 25.6px; // 1.6
-  letter-spacing: 0.8px;
-  color: #222;
-  overflow-wrap: anywhere;
-  text-align: justify;
-  white-space: normal;
-  word-break: normal;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.box {
+  width: 150px;
+  height: 150px;
+  background: skyblue;
 }
