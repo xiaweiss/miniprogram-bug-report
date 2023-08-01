@@ -6,10 +6,130 @@
   refresher-enabled
   refresher-triggered="{{refresherTriggered}}"
 >
-  <view
-    class="swiper-item"
-  >
-    <image mode="aspectFill" class="swiper-image-bg" src="{{url}}" />
-    <image mode="aspectFit" class="swiper-image" src="{{url}}" />
+  <view class="P">
+    <text user-select>
+      <text bind:tap="onTap">消费升级落幕，张勇时代结束</text>
+    </text>
+  </view>
+
+
+  <view class="P">
+    <text user-select>
+      <text>阿里集团 5 月 18 日宣布各部门独立计划时，已经明确预示了张勇将卸任阿里集团的职位。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>{{'\n'}}</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>如《晚点财经》当天报道中的分析，张勇作为阿里集团董事局主席兼 CEO，只出现在阿里云这一个业务集团的董事会里，董事会与他搭挡的要么是曾经的直接下属，要么还在集团一线工作。其他四个重要业务集团的董事会都与他无关，加入了多位已长久不过问业务的早期阿里合伙人。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>马云 2019 年退休时说 “希望换个江湖”，张勇这次要 “创造一个新的江湖”。他带走阿里内部最有增长潜力的生意，推动其从集团完全独立，并在监管更严的地方上市。如他自己所说，考虑到公司规范化治理的要求，自己不宜兼任集团和阿里云的管理者 。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>阿里员工对张勇的卸任并不感到意外，多数人在内网张勇公开信底下只留下 “M” 的评论 —— 只是标记一下，表示他们看到了、参与了、见证了历史。也有人晒出合照，送上祝福，表达感谢，评论区重复最多的是张勇公开信结尾的 “再相会、任逍遥”，少有人以实名的形式发表自己真正的感受和想法。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>一些员工告诉《晚点 LatePost》，虽然张勇在阿里未能压制拼多多，但大家私下里还是觉得他是 “比你聪明还比你勤奋的人”，认可他做成的天猫以及在无线化时代保住了阿里的位置。“一位有过战功的 CEO” 是老阿里人之间的共识。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>张勇在阿里集团任职至今 16 年。他抓住了曾经的消费升级大趋势，让阿里集团年销售额突破万亿美元、积累了千亿美元现金，一度成为中国市值最高的公司，带给股东巨大回报。也是在他担任阿里集团 CEO 期间，阿里忽视了消费形势的转变，它的挑战者们快速成长，形成迫近的威胁。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>就像一位投行人士在看到今天消息时的感慨，张勇落幕代表互联网消费升级（新零售、海淘、O2O 等）时代告一段落。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>张勇 2007 年加入阿里巴巴，从淘宝网 CFO 起步，8 年后接任阿里集团 CEO。成为 CEO 前的 8 年，他的最重大贡献是创立天猫、让品牌愿意在阿里卖货投广告。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>接任 CEO 之后，张勇推动搭建了 “大中台”，让各业务共享数据和技术，试图让阿里集团合力对敌。他本人也成了决策的集合点，总是亲力亲为，最忙的时候一度接受超过 30 人直接汇报，同时照管线上零售、线下商超、线上批发、物流、云计算等商业模式和团队基因完全不同的生意。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>这 8 年，阿里集团大致延续了天猫此前的成功战略，进一步押注消费升级：</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>天猫接住了阿里 IPO 后蜂拥而至的国际品牌。苹果、优衣库、欧莱雅等谨慎控制渠道的外资品牌很长时间都只在天猫开线上店。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>收购银泰、大润发，孵化并重金投入盒马，试图融合电商与线下零售业，构建 “新零售”，抓住生活里最高频的生鲜消费。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>收购饿了么、投入 O2O，进入了美团所在的每一个市场，满足新中产消费需求。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>菜鸟投资物流、饿了么送外卖、天猫卖品牌货，阿里集团的所有大投资都有一个共同的期许——随着经济发展，更多中国人将变得有钱，愿意花更多钱获取更好的商品和服务。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>2016 年淘宝旅行改名为飞猪时，宣布的品牌定位是 “主攻年轻人境外自由行”。2017 年张勇和马云去盒马探店，桌上摆的是帝王蟹、波士顿龙虾、黑毛猪肉。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>在 2018 年以前，阿里盈利规模和增速持续提高、稳定在单季 200 亿元以上。那时人们的账面资产在那轮房价涨价潮中迅速膨胀，消费欲得到极大刺激，消费信心指数以异常陡峭的斜率攀升。在央行 2018 年底的例行问卷调查中，28.6% 的受访者倾向于更多消费，创金融危机以后新高。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>在那样的环境下，中国最大在线零售企业追求消费升级、进入生鲜零售似乎时理所应当。但 2018 年之后，中美贸易摩擦、三年疫情，消费升级逐渐变成了消费分化。少数人不受影响，继续买豪车、买 LV 和爱马仕，但所谓中产消费群体没有继续增长，人们从向往更好更贵的生活方式，转向便宜而实际的消费。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>“新零售” 很快陷入了困境。“新零售” 通过线下实体，更容易接触到消费者，但也需要付出比电商更高的成本，只能等待消费力的升级。</text>
+    </text>
+  </view>
+
+  <view class="P">
+    <text user-select>
+      <text>盒马创办 8 年，投入数百亿元补贴、开店、搭供应链，卖得依然是更高品质，但比菜场和普通商超都更贵。2022 年，盒马收入 550 亿元，占阿里 GMV 不足 1%，最近几个季度刚开始扭亏。而大润发、银泰的改造更是收效甚微。</text>
+    </text>
   </view>
 </page>

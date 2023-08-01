@@ -1,23 +1,13 @@
-.swiper-item {
-  position: relative;
-  width: 303px;
-  height: 404px;
-}
-
-.swiper-image-bg,
-.swiper-image {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-image-bg {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.swiper-image {
-  position: relative;
-  z-index: 1;
-  backdrop-filter: blur(14px);
+.P {
+  display: block;
+  min-height: 25.6px; // line-height
+  margin: 0;
+  font-size: 16px;
+  line-height: 25.6px; // 1.6
+  letter-spacing: 0.8px;
+  color: #222;
+  overflow-wrap: anywhere;
+  text-align: justify;
+  white-space: normal;
+  word-break: normal;
 }
