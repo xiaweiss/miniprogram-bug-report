@@ -5,7 +5,11 @@
   lower-threshold="215"
   enable-bottom
 >
-  <view class="container">
-    <view class="box" />
+  <view class="box">
+    <textarea
+      class="textarea"
+      value="textarea 不支持 auto-height"
+      auto-height
+    />
   </view>
 </page>

@@ -1,12 +1,10 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 .box {
   width: 150px;
-  height: 150px;
+  height: auto;
   background: skyblue;
+}
+
+.textarea {
+  width: 100%;
+  height: auto;
 }
