@@ -1,4 +1,4 @@
-import { wxToPromise } from '../../utils/index'
+import { wxToPromise, getInstance } from '../../utils/index'
 
 Page({
   data: {
@@ -17,9 +17,6 @@ Page({
     }
   },
   onTap () {
-    wx.showToast({
-      icon: 'none',
-      title: 'tap 事件触发',
-    })
+    getInstance('#pay-setting-modal', this)?.show()
   },
 })

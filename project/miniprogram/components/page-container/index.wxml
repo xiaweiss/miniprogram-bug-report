@@ -12,7 +12,7 @@
     />
     <view
       class="page-container-content {{position}} {{showing ? 'showing' : ''}}"
-      style="transition-duration:{{duration}}ms;{{customStyle}};"
+      style="transition-duration:{{duration}}ms;max-height:calc(100% - {{navBarHeight}}px);{{customStyle}};"
       bind:transitionend="onTransitionEnd"
       catch:tap="noop"
     >

@@ -1,5 +1,7 @@
 import { isSkyline } from '../../utils/index'
 
+const app = getApp<AppData>()
+
 Component({
   options: {
     pureDataPattern: /^_/,
@@ -57,7 +59,8 @@ Component({
   lifetimes: {
     attached() {
       this.setData({
-        isSkyline: isSkyline()
+        isSkyline: isSkyline(),
+        navBarHeight: app.globalData.navBarHeight,
       })
     },
     ready () {

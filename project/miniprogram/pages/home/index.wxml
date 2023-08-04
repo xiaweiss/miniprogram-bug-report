@@ -5,11 +5,9 @@
   lower-threshold="215"
   enable-bottom
 >
-  <view class="box">
-    <textarea
-      class="textarea"
-      value="textarea 不支持 auto-height"
-      auto-height
-    />
+  <view class="test" bind:tap="onTap">
+    点击展示弹窗
   </view>
 </page>
+
+<pay-setting-modal id="pay-setting-modal" />

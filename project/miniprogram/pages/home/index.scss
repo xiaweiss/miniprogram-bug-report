@@ -1,10 +1,16 @@
-.box {
-  width: 150px;
-  height: auto;
-  background: skyblue;
-}
-
-.textarea {
-  width: 100%;
-  height: auto;
+.test {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 40px;
+  margin: 0 auto 20px;
+  background: #CC5656;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
 }
