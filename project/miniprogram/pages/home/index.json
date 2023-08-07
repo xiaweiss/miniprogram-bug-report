@@ -2,7 +2,7 @@
   "navigationStyle": "custom",
   "disableScroll": true,
   "usingComponents": {
-    "pay-setting-modal": "./pay-setting-modal"
+
   },
   "renderer": "skyline"
 }

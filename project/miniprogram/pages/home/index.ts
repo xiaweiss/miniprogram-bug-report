@@ -16,7 +16,16 @@ Page({
       })
     }
   },
-  onTap () {
-    getInstance('#pay-setting-modal', this)?.show()
+  uploadFile () {
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ['mix'],
+      success (res) {
+        console.log('chooseMedia', res)
+      }
+    })
   },
+  uploadWxFile () {
+    wx.chooseMessageFile()
+  }
 })

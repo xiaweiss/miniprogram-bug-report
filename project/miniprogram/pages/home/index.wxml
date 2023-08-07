@@ -5,9 +5,12 @@
   lower-threshold="215"
   enable-bottom
 >
-  <view class="test" bind:tap="onTap">
-    点击展示弹窗
+  <view class="test" bind:tap="uploadFile">
+    上传音频文件
+  </view>
+
+  <view class="test" bind:tap="uploadWxFile">
+    上传微信文件
   </view>
 </page>
 
-<pay-setting-modal id="pay-setting-modal" />

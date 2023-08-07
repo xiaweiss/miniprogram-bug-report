@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "page-container": "../../../components/page-container",
-    "step": "./step"
-  }
-}
