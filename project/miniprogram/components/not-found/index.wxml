@@ -1,7 +1,4 @@
-<view
-  class="not-found"
-  style="height: {{height}}px;"
->
+<view class="not-found class">
   <image class="img-not-found" src="{{image}}" />
   <view class="not-found-text">{{text}}</view>
 </view>

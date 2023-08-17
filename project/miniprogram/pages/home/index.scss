@@ -1,16 +1,13 @@
-.test {
-  flex-shrink: 0;
+.sticky-header {
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 10;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 140px;
-  height: 40px;
-  margin: 0 auto 20px;
-  background: #CC5656;
-  color: #fff;
-  border-radius: 20px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1;
-  cursor: pointer;
+  flex-direction: column;
+}
+
+.not-found {
+  flex: 1;
+  height: 100%;
 }

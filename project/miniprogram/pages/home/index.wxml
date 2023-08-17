@@ -3,14 +3,16 @@
 <page
   background="#f5f6f8"
   lower-threshold="215"
-  enable-bottom
+  support-sticky
 >
-  <view class="test" bind:tap="uploadFile">
-    上传音频文件
-  </view>
+  <sticky-header class="sticky-header">
+    <view>sticky-header</view>
+  </sticky-header>
 
-  <view class="test" bind:tap="uploadWxFile">
-    上传微信文件
-  </view>
+  <not-found
+    class="not-found"
+    image="{{img_note_not_found}}"
+    text="暂无笔记"
+  />
 </page>
 
