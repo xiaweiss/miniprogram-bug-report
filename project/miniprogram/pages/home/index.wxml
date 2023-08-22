@@ -5,14 +5,10 @@
   lower-threshold="215"
   support-sticky
 >
-  <sticky-header class="sticky-header">
-    <view>sticky-header</view>
-  </sticky-header>
-
-  <not-found
-    class="not-found"
-    image="{{img_note_not_found}}"
-    text="暂无笔记"
-  />
+  <swipe-action
+    rightWidth="80"
+  >
+    <view class="box">按下左滑</view>
+  </swipe-action>
 </page>
 

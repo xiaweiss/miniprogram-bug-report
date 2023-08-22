@@ -2,7 +2,7 @@
   "navigationStyle": "custom",
   "disableScroll": true,
   "usingComponents": {
-    "not-found": "../../components/not-found"
+    "swipe-action": "../../components/note-item/swipe-action"
   },
   "renderer": "skyline"
 }
