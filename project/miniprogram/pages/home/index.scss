@@ -1,8 +1,7 @@
-.box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100px;
-  background: pink;
+.type {
+  padding: 20px;
+}
+
+.not-found {
+  height: calc(100% - env(safe-area-inset-bottom) - 104px); // 65 * 1.5
 }

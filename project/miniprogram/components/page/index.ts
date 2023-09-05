@@ -13,6 +13,7 @@ Component({
     lowerThreshold: { type: Number, value: 50 },
     navigationBarBackgroundColor: { type: String, value: 'transparent' },
     navigationBarTitleText: { type: String, value: '墨问便签' },
+    navigationBarFrontColor: { type: String, value: '#000000' },
     refresherEnabled: { type: Boolean, value: false },
     refresherBackground: { type: String, value: '' }, // 默认值 #fff 表示透明色，如果需要白色，需要设置为 #ffffff、white
     refresherTriggered: { type: Boolean, value: false },

@@ -2,7 +2,8 @@
   "navigationStyle": "custom",
   "disableScroll": true,
   "usingComponents": {
-    "swipe-action": "../../components/note-item/swipe-action"
+    "type": "../../components/type",
+    "not-found": "../../components/not-found"
   },
-  "renderer": "skyline"
+  "renderer": "webview"
 }

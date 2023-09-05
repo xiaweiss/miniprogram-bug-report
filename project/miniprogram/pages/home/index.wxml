@@ -2,13 +2,26 @@
 
 <page
   background="#f5f6f8"
-  lower-threshold="215"
-  support-sticky
+  refresherEnabled
 >
-  <swipe-action
-    rightWidth="80"
-  >
-    <view class="box">按下左滑</view>
-  </swipe-action>
+  <type
+    class="type"
+    font-size="{{15}}"
+    spacing="{{40}}"
+    type="{{type}}"
+    typeList="{{typeList}}"
+    bind:change="changeType"
+  />
+
+  <view wx:if="{{type === 0}}" style="height: 1000px;">
+    type 0
+  </view>
+
+  <not-found
+    wx:elif="{{type}}"
+    class="not-found"
+    image="{{img_note_not_found}}"
+    text="{{typeList[type].loading ? '加载中...' : '暂无订单' }}"
+  />
 </page>
 

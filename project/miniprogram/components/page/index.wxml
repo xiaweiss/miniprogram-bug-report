@@ -9,6 +9,7 @@
   <nav-bar
     title="{{navigationBarTitleText}}"
     background="{{navigationBarBackgroundColor}}"
+    front-color="{{navigationBarFrontColor}}"
   >
     <slot name="navigationBarLeft" />
   </nav-bar>
@@ -19,7 +20,6 @@
     <scroll-view
       class="scroll-view"
       enable-back-to-top
-      enable-flex
       enhanced
       bounces="{{bounces}}"
       lower-threshold="{{lowerThreshold}}"
