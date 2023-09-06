@@ -1,0 +1,16 @@
+.keyboard-accessory {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2000;
+  width: 100vw;
+  height: auto;
+
+  &.skyline {
+    position: absolute;
+  }
+
+  &.hide {
+    display: none;
+  }
+}

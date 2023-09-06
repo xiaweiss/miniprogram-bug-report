@@ -5,3 +5,17 @@
 .not-found {
   height: calc(100% - env(safe-area-inset-bottom) - 104px); // 65 * 1.5
 }
+
+.tool-bar {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  background: #F5F6F8;
+  border-top: 0.5px solid #ddd;
+  user-select: none;
+  -webkit-user-select: none;
+}

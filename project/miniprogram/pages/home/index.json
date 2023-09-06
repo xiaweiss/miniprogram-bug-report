@@ -3,7 +3,8 @@
   "disableScroll": true,
   "usingComponents": {
     "type": "../../components/type",
-    "not-found": "../../components/not-found"
+    "not-found": "../../components/not-found",
+    "custom-keyboard-accessory": "../../components/custom-keyboard-accessory"
   },
-  "renderer": "webview"
+  "renderer": "skyline"
 }

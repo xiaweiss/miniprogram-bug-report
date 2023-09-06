@@ -4,24 +4,15 @@
   background="#f5f6f8"
   refresherEnabled
 >
-  <type
-    class="type"
-    font-size="{{15}}"
-    spacing="{{40}}"
-    type="{{type}}"
-    typeList="{{typeList}}"
-    bind:change="changeType"
-  />
-
-  <view wx:if="{{type === 0}}" style="height: 1000px;">
-    type 0
+  <view>
+    <input placeholder="input 输入框" />
   </view>
 
-  <not-found
-    wx:elif="{{type}}"
-    class="not-found"
-    image="{{img_note_not_found}}"
-    text="{{typeList[type].loading ? '加载中...' : '暂无订单' }}"
-  />
 </page>
 
+
+<custom-keyboard-accessory>
+  <view  class="tool-bar">
+    工具栏
+  </view>
+</custom-keyboard-accessory>
