@@ -1,5 +1,7 @@
 import { emitter, toFixed } from '../../../utils/index'
 
+const app = getApp<AppData>()
+
 Component({
   options: {
     virtualHost: true,
@@ -36,11 +38,15 @@ Component({
       })
     },
     onFocusIntro (e) {
-      console.log('onFocusIntro', e)
-      this.triggerEvent('introFocusChanged', {focus: true})
+      const { keyboardHeight, safeAreaBottom } = app.globalData
+
+      this.setData({
+        keyboardPlaceholderHeight: keyboardHeight - safeAreaBottom - 80 // 底部按钮高度 80 + 工具栏高度 50
+      })
+      // this.triggerEvent('introFocusChanged', {focus: true})
     },
     onBlurIntro () {
-      this.triggerEvent('introFocusChanged', {focus: false})
+      // this.triggerEvent('introFocusChanged', {focus: false})
     },
     onInputIntro (e: WechatMiniprogram.TextareaInput) {
       let { value: intro } = e.detail

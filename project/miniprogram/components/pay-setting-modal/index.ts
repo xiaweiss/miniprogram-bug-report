@@ -62,7 +62,8 @@ Component({
       const { skuId = '', step = 0 } = config || {}
 
       let title = ''
-      let intro = '作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介last'
+      // let intro = '作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介last'
+      let intro = '作品简介'
       let price = ''
 
       this.setData({

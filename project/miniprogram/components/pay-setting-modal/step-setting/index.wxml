@@ -8,6 +8,7 @@
       <view class="label">作品名称</view>
       <textarea
         class="title"
+        fixed
         auto-height
         confirm-type="done"
         show-confirm-bar="{{false}}"
@@ -37,9 +38,9 @@
         bind:blur="onBlurIntro"
         bind:input="onInputIntro"
       >
-        <!-- <keyboard-accessory class="tool-bar-intro" style="height: 50px;background: #ffffff;">
+        <keyboard-accessory class="tool-bar-intro" style="height: 50px;background: #ffffff;">
           <cover-view>工具栏</cover-view>
-        </keyboard-accessory> -->
+        </keyboard-accessory>
       </textarea>
       <view class="desc-bottom" catch:touchstart="noop" catch:mousedown="noop">
         <view class="edit">
@@ -61,5 +62,8 @@
         bind:input="onInputPrice"
       />
     </view>
+    <view class="shadow-placeholder" />
+
+    <view style="height: {{keyboardPlaceholderHeight}}px" />
   </scroll-view>
 </view>
