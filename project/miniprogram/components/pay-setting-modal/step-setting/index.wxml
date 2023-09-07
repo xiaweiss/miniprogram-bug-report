@@ -1,0 +1,64 @@
+<view class="step-setting">
+  <scroll-view
+    class="scroll-view"
+    scroll-y
+  >
+    <view class="shadow-placeholder" />
+    <view class="container">
+      <view class="label">作品名称</view>
+      <textarea
+        class="title"
+        auto-height
+        confirm-type="done"
+        show-confirm-bar="{{false}}"
+        maxlength="{{-1}}"
+        placeholder="请输入作品名称"
+        placeholder-class="placeholder"
+        value="{{title}}"
+        bind:input="onInputTitle"
+      />
+      <view class="title-bottom">
+        <view class="count">{{titleLength}}/20</view>
+      </view>
+    </view>
+    <view class="container">
+      <view class="label">作品简介</view>
+      <textarea
+        class="desc"
+        fixed
+        auto-height
+        adjust-position
+        show-confirm-bar="{{false}}"
+        maxlength="{{-1}}"
+        placeholder="请输入 50-500 字作品简介"
+        placeholder-class="placeholder"
+        value="{{intro}}"
+        bind:focus="onFocusIntro"
+        bind:blur="onBlurIntro"
+        bind:input="onInputIntro"
+      >
+        <keyboard-accessory class="tool-bar-intro" style="height: 50px;background: #ffffff;">
+          <cover-view>工具栏</cover-view>
+        </keyboard-accessory>
+      </textarea>
+      <view class="desc-bottom" catch:touchstart="noop" catch:mousedown="noop">
+        <view class="edit">
+          <image class="icon-edit" src="../../../../assets/icon/img.svg" />
+          <image class="icon-edit" src="../../../../assets/icon/date.svg" />
+        </view>
+        <view class="count">{{introLength}}/500</view>
+      </view>
+    </view>
+    <view class="container">
+      <view class="label">付费金额</view>
+      <input
+        class="price"
+        type="number"
+        placeholder="请输入付费金额"
+        placeholder-class="placeholder"
+        value="{{priceText}}"
+        bind:input="onInputPrice"
+      />
+    </view>
+  </scroll-view>
+</view>

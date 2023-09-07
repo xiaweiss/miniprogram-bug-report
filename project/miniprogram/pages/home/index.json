@@ -2,9 +2,7 @@
   "navigationStyle": "custom",
   "disableScroll": true,
   "usingComponents": {
-    "type": "../../components/type",
-    "not-found": "../../components/not-found",
-    "custom-keyboard-accessory": "../../components/custom-keyboard-accessory"
+    "pay-setting-modal": "../../components/pay-setting-modal"
   },
-  "renderer": "skyline"
+  "renderer": "webview"
 }

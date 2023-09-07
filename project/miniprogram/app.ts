@@ -1,6 +1,6 @@
 
 // @ts-ignore
-import { wxToPromise, isPC, isIOS, emitter } from './utils/index'
+import { wxToPromise, isPC, isIOS, emitter, isCustomNavigation } from './utils/index'
 import { showModal } from './components/modal/showModal'
 
 interface AppOption extends AppData {
@@ -29,6 +29,7 @@ const globalData : AppData['globalData'] = {
   systemInfo: undefined,
   uuid: '',
   versionTip: false,
+  windowHeight: 0,
   xMoAuthorization: '',
   xMoAuthorizationChecksum: '',
 }
@@ -63,12 +64,14 @@ App<AppOption>({
     const systemInfo = wx.getSystemInfoSync()
     this.globalData.systemInfo = systemInfo
 
-    // 计算底部安全区高度，mac screenHeight 比实际显示的高，这里做个修正
-    // windows 2.26.1 开始 screenHeight 和 windowHeight 不同了，需要用 systemInfo.windowHeight - systemInfo.safeArea.bottom
-    this.globalData.safeAreaBottom = isPC(this) ? 0 : systemInfo.screenHeight - systemInfo.safeArea.bottom
+    // 默认浅色主题，只有详情页才可能出现深色主题
+    this.globalData.systemInfo.theme = 'light'
 
-    // 计算导航栏高度
-    if (wx.getMenuButtonBoundingClientRect) {
+    // 计算底部安全区高度
+    this.globalData.safeAreaBottom = isPC(this) ? 0 : (systemInfo.screenHeight - systemInfo.safeArea.bottom)
+
+    // 计算导航栏高度（非自定义导航的页面需要通过 isCustomNavigation 自行处理）
+    if (!isPC(this) && wx.getMenuButtonBoundingClientRect) {
       const rect = wx.getMenuButtonBoundingClientRect()
       if (rect) {
         const {top, bottom} = rect!
@@ -77,6 +80,11 @@ App<AppOption>({
         this.globalData.navBarHeight = navbarHeight + navbarPaddingTop
       }
     }
+
+    // 包含自定义导航栏的窗口高度
+    const { navBarHeight } = this.globalData
+    const { windowHeight } = systemInfo
+    this.globalData.windowHeight = isCustomNavigation(systemInfo, this) ? windowHeight : (windowHeight + navBarHeight)
 
     console.log('systemInfo', this.globalData.systemInfo)
   },

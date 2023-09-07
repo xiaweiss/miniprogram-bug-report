@@ -2,17 +2,10 @@
 
 <page
   background="#f5f6f8"
-  refresherEnabled
 >
-  <view>
-    <input placeholder="input 输入框" />
+  <view bind:tap="onTap">
+    点击弹层
   </view>
-
 </page>
 
-
-<custom-keyboard-accessory>
-  <view  class="tool-bar">
-    工具栏
-  </view>
-</custom-keyboard-accessory>
+<pay-setting-modal id="pay-setting-modal" />

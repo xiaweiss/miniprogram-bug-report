@@ -1,0 +1,107 @@
+.pay-setting-modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 0;
+}
+
+.close {
+  padding: 10px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  margin-right: -10px;
+  cursor: pointer;
+}
+
+.close-icon {
+  width: 13px;
+  height: 13px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 37px; // 17 + 20
+}
+
+.cancel,
+.confirm {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cancel {
+  background: #F6F7FB;
+  color: #888;
+}
+
+.confirm {
+  margin-left: 20px;
+  background: #CC5656;
+  color: #fff;
+}
+
+.tool-bar-intro {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  background: #F5F6F8;
+  border-top: 0.5px solid #ddd;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.edit {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 0;
+  max-width: 76px; // 21 * 2 + 34 * 1
+  height: 100%;
+}
+
+
+.icon-edit {
+  width: 21px;
+  height: 21px;
+}
+
+.fold {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 66px;
+  height: 32px;
+  margin-left: 20px;
+  border-radius: 16px;
+  color: #fff;
+  background: #CC5656;
+  cursor: pointer;
+}
+
+
+.icon-send {
+  width: 16px;
+  height: 16px;
+}
