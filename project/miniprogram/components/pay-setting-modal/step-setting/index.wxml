@@ -28,7 +28,7 @@
         fixed
         auto-height
         adjust-position
-        show-confirm-bar="{{false}}"
+        show-confirm-bar
         maxlength="{{-1}}"
         placeholder="请输入 50-500 字作品简介"
         placeholder-class="placeholder"
@@ -37,9 +37,9 @@
         bind:blur="onBlurIntro"
         bind:input="onInputIntro"
       >
-        <keyboard-accessory class="tool-bar-intro" style="height: 50px;background: #ffffff;">
+        <!-- <keyboard-accessory class="tool-bar-intro" style="height: 50px;background: #ffffff;">
           <cover-view>工具栏</cover-view>
-        </keyboard-accessory>
+        </keyboard-accessory> -->
       </textarea>
       <view class="desc-bottom" catch:touchstart="noop" catch:mousedown="noop">
         <view class="edit">
@@ -54,6 +54,7 @@
       <input
         class="price"
         type="number"
+        always-embed
         placeholder="请输入付费金额"
         placeholder-class="placeholder"
         value="{{priceText}}"
