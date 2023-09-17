@@ -3,9 +3,5 @@
 <page
   background="#f5f6f8"
 >
-  <view bind:tap="onTap">
-    点击弹层
-  </view>
+  <pay-setting-modal />
 </page>
-
-<pay-setting-modal id="pay-setting-modal" />

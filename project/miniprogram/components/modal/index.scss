@@ -1,9 +1,6 @@
 .modal {
   width: 311px;
   padding: 24px 24px 20px;
-  background: #fff;
-  border-radius: 14px;
-  z-index: 1001;
 }
 
 .title {
@@ -13,6 +10,11 @@
   text-align: center;
 }
 
+.qr-code {
+  width: 263px; // 311 - 24 - 24
+  height: 263px;
+}
+
 .content {
   font-size: 14px;
   color: #353535;
@@ -20,7 +22,7 @@
   line-height: 20px;
   min-height: 14px;
 
-  .title + & {
+  &.has-title {
     margin-top: 12px;
     color: #888;
   }
@@ -28,6 +30,14 @@
   &.left {
     text-align: left;
   }
+
+  .privacy & {
+    text-align: justify;
+  }
+}
+
+.link {
+  color: #CC5656;
 }
 
 .input-container {
@@ -83,9 +93,33 @@
   }
 }
 
+.agree-button {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: #CC5656;
+}
+
 .cancel {
   width: 118px;
   margin-right: 20px;
   background: #F6F7FB;
   color: #888;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+/**
+ * 夜间模式配色
+ */
+.theme-dark {
+  .title,
+  .content,
+  .cancel {
+    color: var(--theme-dark-color-primary);
+  }
+  .title + .content { color: var(--theme-dark-color-secondary) }
+  .cancel { background: var(--theme-dark-background-color-tertiary) }
 }

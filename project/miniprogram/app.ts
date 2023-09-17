@@ -113,29 +113,53 @@ App<AppOption>({
       this.globalData.isWeakNet = res.weakNet
     })
 
+    // 需要用户同意隐私授权时
+    if (wx.onNeedPrivacyAuthorization)
+    wx.onNeedPrivacyAuthorization(async (resolve) => {
+      const [res] = await wxToPromise(showModal, {
+        title: '个人信息保护提示',
+        privacy: true,
+      })
+      if (res?.confirm) {
+        resolve({ buttonId: 'modal-confirm', event: 'agree' })
+      } else if (res?.cancel) {
+        resolve({ buttonId: 'modal-cancel', event: 'disagree' })
+      }
+    })
+
     // 键盘高度变化事件
     wx.onKeyboardHeightChange((res) => {
-      console.log('app.ts keyboardHeightChange', res.height)
       this.globalData.keyboardHeight = res.height
+      wx.showToast({
+        title: `键盘高度变化：${res.height}`,
+        icon: 'none'
+      })
       emitter.emit('keyboardHeightChange', res)
     })
 
-    // 窗口尺寸变化事件（微信 bug： mac 客户端 <= 3.7 版本不能触发）
+    // 窗口尺寸变化事件（微信 bug： mac 客户端 <= 3.7.0 版本不能触发）
     wx.onWindowResize((res) => {
       if (!res.size || !this.globalData.systemInfo) return
 
-      // 数据相同时，不触发事件
+      const { windowHeight, windowWidth } = res.size
+      const { navBarHeight } = this.globalData
+
+      /**
+       * 窗口尺寸没有变化，页面跳转、返回时 wx.onWindowResize 也会多触发
+       * @see https://github.com/xiaweiss/miniprogram-bug-report/issues/28
+       * @hack 数据相同时，不触发事件
+       */
       if (
-        this.globalData.systemInfo.screenHeight === res.size.screenHeight &&
-        this.globalData.systemInfo.screenWidth === res.size.screenWidth &&
-        this.globalData.systemInfo.windowHeight === res.size.windowHeight &&
-        this.globalData.systemInfo.windowWidth === res.size.windowWidth
+        this.globalData.systemInfo.windowHeight === windowHeight &&
+        this.globalData.systemInfo.windowWidth === windowWidth
       ) return
 
-      this.globalData.systemInfo.screenHeight = res.size.screenHeight
-      this.globalData.systemInfo.screenWidth = res.size.screenWidth
-      this.globalData.systemInfo.windowHeight = res.size.windowHeight
-      this.globalData.systemInfo.windowWidth = res.size.windowWidth
+      this.globalData.systemInfo.windowHeight = windowHeight
+      this.globalData.systemInfo.windowWidth = windowWidth
+
+      const { systemInfo } = this.globalData
+      // 包含自定义导航栏的窗口高度
+      this.globalData.windowHeight = isCustomNavigation(systemInfo, this) ?  windowHeight : (windowHeight + navBarHeight)
 
       // 事件触发器，去广播给页面
       emitter.emit('windowResize')

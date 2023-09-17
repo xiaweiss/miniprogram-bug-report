@@ -37,6 +37,11 @@ Component({
     price: '',
     isIntroFocus: false,
   },
+  lifetimes: {
+    attached () {
+      this.show()
+    }
+  },
   methods: {
     onIntroFocusChanged (e: WechatMiniprogram.CustomEvent<{focus: boolean}>) {
       const { focus: isIntroFocus } = e.detail
@@ -62,8 +67,8 @@ Component({
       const { skuId = '', step = 0 } = config || {}
 
       let title = ''
-      // let intro = '作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介last'
-      let intro = '作品简介'
+      let intro = '作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介\n作品简介last'
+      // let intro = '作品简介'
       let price = ''
 
       this.setData({

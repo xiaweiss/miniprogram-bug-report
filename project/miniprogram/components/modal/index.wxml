@@ -6,53 +6,87 @@
   overlayClose="{{overlayClose}}"
   customStyle="margin-top: -{{keyboardHeight / 2}}px;{{isIOS ? 'transition-property: all;' : ''}}"
   position="center"
+  theme="{{theme}}"
   bind:afterleave="afterClose"
 >
-  <view class="modal">
-    <view wx:if="{{title}}" class="title">{{title}}</view>
-    <view wx:if="{{editable}}" class="input-container">
-      <input
-        class="input"
-        always-embed
-        focus
-        hold-keyboard
-        maxlength="{{maxLength}}"
-        placeholder="{{placeholderText}}"
-        placeholder-class="input-placeholder"
-        value="{{content}}"
-        bind:input="onInput"
+  <view class="modal theme-{{theme}}">
+    <block wx:if="{{privacy}}">
+      <view class="privacy">
+        <view class="title">个人信息保护提示</view>
+        <view class="content has-title">我们会按照相关法律法规的规定及<text class="link" bind:tap="openPrivacyContract">《墨问便签小程序隐私保护指引》</text>，遵守正当、合法、必要原则收集和使用你的个人信息。</view>
+        <view class="content has-title">为了向你提供正常的服务，我们可能会申请相机、麦克风、存储照片等权限，相应权限并不会默认开启或强制收集信息。权限开启后，你可以随时通过设置选项关闭权限。你不同意开启权限，将不会影响其他非相关业务功能的正常使用。</view>
+      </view>
+    </block>
+
+    <block wx:else>
+      <view wx:if="{{title}}" class="title">{{title}}</view>
+      <image
+        wx:if="{{qrCode}}"
+        class="qr-code"
+        src="{{qrCode}}"
+        show-menu-by-longpress
       />
-    </view>
-    <block wx:elif="{{content}}">
-      <!-- 可以考虑写个 wxs，用 content.split('\n') 加循环实现  -->
-      <!-- <view
-        wx:for="{{contentSplit(content)}}"
-        wx:for-item="item"
-        wx:for-index="index"
-        wx:key="index"
-        class="content {{contentAlign}}"
-      >{{item}}</view> -->
-      <view
-        class="content {{contentAlign}}"
-      >{{content}}</view>
+
+      <view wx:if="{{editable}}" class="input-container">
+        <input
+          wx:if="{{modalShow}}"
+          class="input"
+          always-embed
+          focus
+          hold-keyboard
+          maxlength="{{maxLength}}"
+          placeholder="{{placeholderText}}"
+          placeholder-class="input-placeholder"
+          value="{{content}}"
+          bind:input="onInput"
+        />
+      </view>
+      <block wx:elif="{{content}}">
+        <view
+          wx:for="{{contentSplit(content)}}"
+          wx:for-item="item"
+          wx:for-index="index"
+          wx:key="index"
+          class="content {{contentAlign}} {{title ? 'has-title' : ''}}"
+        >{{item}}</view>
+      </block>
     </block>
 
     <view class="button-container">
-      <view
-        wx:if="{{showCancel}}"
+      <hover-view
+        wx:if="{{privacy || showCancel}}"
+        id="modal-cancel"
         class="cancel"
         style="{{'color: ' + cancelColor}}"
         bind:tap="cancel"
       >
-        {{cancelText}}
-      </view>
-      <view
-        class="confirm"
-        style="{{'color: ' + confirmColor}}"
-        bind:tap="confirm"
-      >
-        {{confirmText}}
-      </view>
+        {{privacy ? '不同意' : cancelText}}
+      </hover-view>
+
+      <block wx:if="{{showConfirm}}">
+        <hover-view
+          wx:if="{{privacy}}"
+          class="confirm"
+        >
+          <button
+            id="modal-confirm"
+            class="agree-button"
+            style="{{'color: ' + confirmColor}}"
+            open-type="agreePrivacyAuthorization"
+            bind:agreeprivacyauthorization="confirm"
+          >同意</button>
+        </hover-view>
+
+        <hover-view
+          wx:else
+          class="confirm"
+          id="modal-confirm"
+          style="{{'color: ' + confirmColor}}"
+          bind:tap="confirm"
+        >
+          {{confirmText}}
+        </hover-view>
+      </block>
     </view>
   </view>
 </page-container>

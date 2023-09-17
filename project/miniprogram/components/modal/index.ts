@@ -5,7 +5,9 @@ const app = getApp<AppData>()
 const defaultConfig: ShowModalOption = {
   title: '',
   content: '',
+  qrCode: '',
   showCancel: true,
+  showConfirm: true,
   cancelText: '取消',
   cancelColor: '#888',
   confirmText: '确定',
@@ -18,6 +20,7 @@ const defaultConfig: ShowModalOption = {
   complete: null,
   overlayClose: false,
   contentAlign: 'center',
+  privacy: false,
 }
 
 Component({
@@ -25,6 +28,7 @@ Component({
     isIOS: isIOS(),
     modalShow: false,
     keyboardHeight: app.globalData.keyboardHeight || 0,
+    theme: 'light' as WechatMiniprogram.SystemInfo['theme'],
     ...defaultConfig
   },
   lifetimes: {
@@ -54,6 +58,7 @@ Component({
 
     showModal(config: WechatMiniprogram.ShowModalOption) {
       this.setData({
+        theme: app.globalData.systemInfo!.theme,
         modalShow: true,
         ...config,
       })
@@ -102,6 +107,13 @@ Component({
           ...res,
         })
       }
+    },
+    /**
+     * 打开隐私协议
+     */
+    openPrivacyContract () {
+      if (wx.openPrivacyContract)
+        wx.openPrivacyContract({})
     }
   }
 })

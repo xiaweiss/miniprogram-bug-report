@@ -4,6 +4,10 @@
   flex-direction: column;
   height: 0;
   padding-top: 10px;
+
+  &.hide {
+    visibility: hidden;
+  }
 }
 
 .scroll-view {
@@ -12,7 +16,7 @@
   height: 0;
 }
 
-.shadow-placeholder {
+.scroll-view-placeholder {
   height: 18px;
 }
 
@@ -24,10 +28,26 @@
   box-shadow: 0 0 18px 0 rgb(238,242,245);
 }
 
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 22px;
+  margin-bottom: 8px; // 14 - (22 - 16)
+}
+
 .label {
-  margin-bottom: 14px;
   font-size: 16px;
   color: #353535;
+}
+
+.clear {
+  // transform: translate(10px, -2.5px);
+  padding: 5px 10px;
+  margin-right: -10px;
+  margin-top: -2.5px;
+  font-size: 12px;
+  color: #b2b2b2;
 }
 
 .placeholder {
@@ -35,7 +55,8 @@
 }
 
 .title,
-.desc {
+.intro,
+.price {
   width: 100%;
   font-size: 14px;
   line-height: 20px;
@@ -43,7 +64,7 @@
 }
 
 .title-bottom,
-.desc-bottom {
+.intro-bottom {
   display: flex;
   align-items: center;
   margin-top: 10px;
@@ -51,10 +72,6 @@
 
 .title-bottom {
   justify-content: flex-end;
-}
-
-.desc-bottom {
-  justify-content: space-between;
 }
 
 
@@ -80,13 +97,69 @@
   align-items: center;
 }
 
-.price {
-  margin-top: 14px;
-  font-size: 14px;
-  line-height: 1;
-  color: #404040;
+.tool-bar-intro {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  background: #F5F6F8;
+  border-top: 0.5px solid #ddd;
 }
 
-.tool-bar-intro {
+.tool-bar-edit {
+  flex: 1;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 0;
+  max-width: 76px; // 21 * 2 + 34 * 1
+  height: 100%;
+}
+
+.tool-bar-fold {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 66px;
+  height: 32px;
+  margin-left: 20px;
+  border-radius: 16px;
+  color: #fff;
+  background: #CC5656;
+  cursor: pointer;
+}
+
+
+.icon-send {
+  width: 16px;
+  height: 16px;
+}
+
+.intro-image-container {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin-top: 12px;
+}
+
+.intro-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.intro-image-del {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 17px;
+  height: 17px;
+}
+
+.intro-bottom {
+  justify-content: space-between;
 }

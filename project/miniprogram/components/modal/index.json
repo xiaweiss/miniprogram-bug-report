@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "page-container": "../page-container/index"
+    "page-container": "../page-container"
   }
 }
