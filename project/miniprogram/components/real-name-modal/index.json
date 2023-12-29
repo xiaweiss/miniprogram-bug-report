@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "checkbox": "../checkbox",
+    "page-container": "../page-container"
+  }
+}

@@ -22,7 +22,20 @@ const globalData : AppData['globalData'] = {
   keyboardHeight: 0,
   loginCode: '',
   navBarHeight: 0,
-  nickName: '',
+  userProfile: {
+    uid: 'uid',
+    name: '墨西西',
+    avatar: {
+      fileUuid: 'AnOnYmoUs_UsEr_AvATaR',
+      url: 'https://dev.priv-sdn-001.mowen.cn/user/avatar/default.png?Expires=1703822155&OSSAccessKeyId=LTAI5tAL575nZwLRtCUcMZH2&Signature=2j5Zr16m5TxlhbF8s5cTPLlTiK4%3D&response-expires=Fri%2C%2029%20Dec%202023%2003%3A55%3A55%20GMT',
+      scale: { w_240: 'https://dev.priv-sdn-001.mowen.cn/user/avatar/default.png?Expires=1703822155&OSSAccessKeyId=LTAI5tAL575nZwLRtCUcMZH2&Signature=ZxsjK1TqrBLlZdPaCIkxzBsdCQI%3D&response-expires=Fri%2C%2029%20Dec%202023%2003%3A55%3A55%20GMT&x-oss-process=image%2Fresize%2Cw_240' }
+    },
+    relation: 1,
+    confirmed: false,
+    remindedAt: '1703750683',
+    createdAt: '1665474468000',
+    intro: ''
+  },
   safeAreaBottom: 0,
   scene: 0,
   shareTicket: '',

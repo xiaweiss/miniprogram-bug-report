@@ -41,23 +41,20 @@ Component({
     leave: false,
     /** 正在展示 */
     showing: false,
+    /** 底部安全区高度。用固定值，因为键盘弹起时，css 的 env(safe-area-inset-bottom)）会为 0，导致 input 上推位置错误 */
+    safeAreaBottom: 0
   },
   observers: {
     'show' (show) {
       if (!this.data._inited) return
       if (show) {
-        this.setData({ isShow: true })
+        this.setData({ isShow: true }, () => {
+          this.setData({ showing: true })
+        })
       } else {
         this.close()
       }
     },
-    'isShow' (isShow) {
-      if (isShow) {
-        wx.nextTick(() => {
-          this.setData({ showing: true })
-        })
-      }
-    }
   },
   lifetimes: {
     attached() {
@@ -65,13 +62,16 @@ Component({
       this.setData({
         isSkyline: isSkyline(),
         navBarHeight: isCustomNavigation(systemInfo, app) ? app.globalData.navBarHeight : 0,
+        safeAreaBottom: app.globalData.safeAreaBottom
       })
     },
     ready () {
       // 小程序启动时，页面加载好之后再弹出，以便显示动画
       this.data._inited = true
       if (this.properties.show) {
-        this.setData({ isShow: true })
+        this.setData({ isShow: true }, () => {
+          this.setData({ showing: true })
+        })
       }
     }
   },
@@ -81,13 +81,10 @@ Component({
       this.setData({ showing: false })
     },
     onTransitionEnd () {
-      if (this.data.isShow !== this.data.showing) {
-        this.setData({
-          isShow: this.data.showing
-        })
-        if (!this.data.isShow) {
-          this.triggerEvent('afterleave')
-        }
+      // 关闭时，先设置 showing false 再设置 isShow false（打开时，先设置，isShow true 再设置 showing true）
+      if (!this.data.showing && this.data.isShow) {
+        this.setData({ isShow: false })
+        this.triggerEvent('afterleave')
       }
     }
   }

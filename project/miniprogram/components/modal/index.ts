@@ -15,12 +15,12 @@ const defaultConfig: ShowModalOption = {
   editable: false,
   maxLength: 140,
   placeholderText: '',
+  overlayClose: false,
+  contentAlign: 'center',
   success: null,
   fail: null,
   complete: null,
-  overlayClose: false,
-  contentAlign: 'center',
-  privacy: false,
+
 }
 
 Component({
@@ -107,13 +107,6 @@ Component({
           ...res,
         })
       }
-    },
-    /**
-     * 打开隐私协议
-     */
-    openPrivacyContract () {
-      if (wx.openPrivacyContract)
-        wx.openPrivacyContract({})
     }
   }
 })

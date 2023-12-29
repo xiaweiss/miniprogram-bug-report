@@ -12,9 +12,10 @@
     />
     <view
       class="page-container-content {{position}} {{showing ? 'showing' : ''}}"
-      style="transition-duration:{{duration}}ms;{{useMaxHeight ? 'height' : 'max-height'}}:calc(100% - {{navBarHeight}}px - 20px);{{customStyle}};"
+      style="transition-duration:{{duration}}ms;{{position === 'bottom' ? ('padding-bottom:' + safeAreaBottom + 'px;') : ''}}{{useMaxHeight ? 'height' : 'max-height'}}:calc(100% - {{navBarHeight}}px - 20px);{{customStyle}};"
       bind:transitionend="onTransitionEnd"
       catch:tap="noop"
+      catch:touchmove="noop"
     >
       <slot />
     </view>

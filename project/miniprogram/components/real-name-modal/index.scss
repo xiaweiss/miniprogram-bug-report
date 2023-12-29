@@ -1,0 +1,119 @@
+
+.real-name-modal {
+  padding: 0 20px 20px;
+}
+
+.title {
+  padding: 34px 0 20px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #353535;
+}
+
+.card-type,
+.real-name,
+.card-no {
+  display: flex;
+  align-items: center;
+  height: 56px; // 16 + 20 + 20
+}
+
+.label {
+  flex-shrink: 0;
+  width: 77px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #353535;
+}
+
+.hr {
+  height: 0.5px;
+  background: #E8E8E8;
+}
+
+.card-type-text {
+  font-size: 16px;
+  color: #353535;
+}
+
+.input-placeholder {
+  font-family: var(--font-family);
+  color: var(--input-placeholder-color);
+}
+
+.real-name-input,
+.card-no-input {
+  flex: 1;
+  height: 22px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.real-name-tip {
+  padding: 10px 0 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+.protocol {
+  position: relative;
+  display: flex;
+  margin-top: 30px;
+  padding-top: 10px;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.protocol-text {
+  margin-top: 6px;
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 17px;
+  color: #888;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.protocol-cloud-account {
+  display: inline-block;
+  padding: 6px 0;
+  line-height: 17px;
+  color: #CC5656;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 37px; // 17 + 20
+}
+
+.cancel,
+.confirm {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cancel {
+  background: #F6F7FB;
+  color: #888;
+}
+
+.confirm {
+  margin-left: 20px;
+  background: #CC5656;
+  color: #fff;
+}

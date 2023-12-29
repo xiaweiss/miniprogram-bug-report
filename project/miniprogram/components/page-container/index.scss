@@ -35,7 +35,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border-bottom: env(safe-area-inset-bottom) solid transparent;
     border-radius: 20px 20px 0 0;
 
     transition-property: transform;
@@ -66,7 +65,7 @@
  */
 .theme-dark {
   .page-container-content {
-    background: var(--theme-dark-background-color-secondary);
+    background: var(--theme-dark-background-color-primary);
   }
   .page-container-overlay.showing {
     background: rgba(0, 0, 0, 0.5);

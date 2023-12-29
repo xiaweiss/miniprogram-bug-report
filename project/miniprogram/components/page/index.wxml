@@ -20,14 +20,13 @@
     <scroll-view
       class="scroll-view"
       enable-back-to-top
-      enhanced
-      bounces="{{bounces}}"
       lower-threshold="{{lowerThreshold}}"
       refresher-enabled="{{refresherEnabled}}"
       refresher-background="{{refresherBackground}}"
+      refresher-default-style="{{refresherDefaultStyle}}"
       refresher-triggered="{{pageRefresherTriggered}}"
       scroll-anchoring
-      scroll-y
+      scroll-y="{{scrollY}}"
       scroll-top="{{pageScrollTop}}"
       scroll-with-animation="{{scrollWithAnimation}}"
       type="custom"
@@ -46,11 +45,13 @@
               @see https://github.com/xiaweiss/miniprogram-bug-report/issues/11
       -->
       <sticky-section wx:if="{{supportSticky}}" class="scroll-view-inner">
+        <view wx:if="{{paddingTop}}" style="height:{{paddingTop}}px" />
         <slot />
         <view wx:if="{{!enableBottom}}" class="safe-area-inset-bottom" />
       </sticky-section>
 
       <block wx:else>
+        <view wx:if="{{paddingTop}}" style="height:{{paddingTop}}px" />
         <slot />
         <view wx:if="{{!enableBottom}}" class="safe-area-inset-bottom" />
       </block>

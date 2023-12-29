@@ -1,4 +1,4 @@
-import { isIOS, isPC } from '../../utils/index'
+import { isIOS, isPC, isWxwork, isMac } from '../../utils/index'
 
 const app = getApp<AppData>()
 
@@ -8,8 +8,12 @@ Component({
   },
   properties: {
     position: { type: String, value: 'relative' },
+    /** 标题 */
     title: { type: String, value: '墨问便签' },
+    /** 背景颜色 */
     background: { type: String, value: 'transparent' },
+    /** 前景颜色值，包括按钮、标题、状态栏的颜色，仅支持 #ffffff 和 #000000 */
+    frontColor: { type: String, value: '#000000' },
     zIndex: { type: Number, value: 0 },
   },
   data: {
@@ -18,7 +22,11 @@ Component({
     /** 胶囊宽度 */
     capsuleWidth: 83,
     /** 是否桌面端 */
-    isPC: false,
+    isPC: isPC(),
+    /** 是否企业微信 */
+    isWxwork: isWxwork(),
+    /** 是否 mac */
+    isMac: isMac(),
     /** 是否显示后退按钮 */
     isBack: false,
     /** 是否首页 */
@@ -32,13 +40,22 @@ Component({
   },
   lifetimes: {
     attached() {
+      const { frontColor, background } = this.properties
+      if (!this.data.isPC && frontColor === '#ffffff') {
+        wx.setNavigationBarColor({frontColor: '#ffffff', backgroundColor: background})
+      }
+
       this.calcStyle()
       const pages = getCurrentPages()
       const page = pages[pages.length - 1]
+      const isHome = page.route === 'pages/home/index' ||
+                     page.route === 'pages/wechatUpdate/index'
+
+      if (isHome) wx.hideHomeButton()
 
       this.setData({
         isBack: pages.length > 1,
-        isHome: page.route === 'pages/home/index'
+        isHome
       })
     },
   },
@@ -64,15 +81,9 @@ Component({
           const navbarPaddingTop = (bottom + top) / 2 - navbarHeight / 2
           const navbarPaddingRight = windowWidth - left
 
-          if (!isPC()) {
-            app.globalData.systemInfo!.windowHeight = systemInfo.screenHeight - navbarHeight - navbarPaddingTop
-          }
-
           this.setData({
-            avatar: app.globalData.avatar,
             capsuleHeight,
             capsuleWidth,
-            isPC: isPC(),
             navbarHeight,
             navbarPaddingRight,
             navbarPaddingTop,

@@ -1,0 +1,72 @@
+<page-container
+  show="{{show}}"
+  bind:afterleave="afterClose"
+>
+  <view class="real-name-modal">
+    <view class="title">请填写您的真实身份信息</view>
+
+    <view class="card-type">
+      <view class="label">证件类型</view>
+      <view class="card-type-text">身份证</view>
+    </view>
+
+    <view class="hr" />
+
+    <view class="real-name">
+      <view class="label">姓名</view>
+      <input
+        class="real-name-input"
+        placeholder-class="input-placeholder"
+        type="text"
+        always-embed
+        confirm-type="done"
+        cursor-spacing="{{47}}"
+        placeholder="请输入您的真实姓名"
+        placeholder-style="{{ {color: '#B2B2B2'} }}"
+        value="{{realName}}"
+        bind:input="onInputRealName"
+      />
+    </view>
+
+    <view class="hr" />
+    <view class="real-name-tip">* 请确保墨问实名信息与该微信一致</view>
+
+
+    <view class="card-no">
+      <view class="label">证件号</view>
+      <input
+        class="card-no-input"
+        placeholder-class="input-placeholder"
+        type="idcard"
+        always-embed
+        confirm-type="done"
+        cursor-spacing="{{17}}"
+        placeholder="请输入本人证件号"
+        placeholder-style="{{ {color: '#B2B2B2'} }}"
+        value="{{cardNo}}"
+        bind:input="onInputCardNo"
+      />
+    </view>
+
+    <view class="hr" />
+
+    <view class="protocol" bind:tap="onTapProtocol">
+      <checkbox
+        class="checkbox"
+        model:checked="{{isAgree}}"
+      />
+
+      <view>
+        <text class="protocol-text">我同意我所提交的信息将用于实名认证，以便使用便签提现服务。</text>
+        <text class="protocol-text">我已认真阅读并同意<text class="protocol-cloud-account" catch:tap="goToProtocolCloudAccount">《灵活就业合作伙伴协议》</text></text>
+      </view>
+    </view>
+
+    <view class="button-container">
+      <hover-view class="cancel" bind:tap="cancel">取消</hover-view>
+      <hover-view class="confirm" bind:tap="confirm">
+        验证信息
+      </hover-view>
+    </view>
+  </view>
+</page-container>

@@ -1,0 +1,3 @@
+<view class="checkbox {{checked ? 'checked' : ''}} class"  catch:tap="onTap">
+  <image class="checkbox-checked-icon" src="../../assets/icon/checkbox-checked.svg" />
+</view>

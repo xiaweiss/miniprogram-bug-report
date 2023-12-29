@@ -1,9 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "page-container": "../page-container",
-    "step-progress": "./step-progress",
-    "step-protocol": "./step-protocol",
-    "step-setting": "./step-setting"
-  }
-}

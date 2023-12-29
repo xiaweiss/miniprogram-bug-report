@@ -3,35 +3,49 @@ page {
   box-sizing: border-box;
   /** 最小高度填充满视口，方便设置页面背景色 */
   min-height: 100vh;
-  /** 默认字体 */
-  font-family: system-ui, -apple-system;
-  /** 移动端按钮按下时，去除高亮 */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  /** 默认行高 */
-  line-height: 1;
 }
 
 /**
  * bug: root-portal 在 webview 模式，无法继承全局 page 的样式
  * @see https://github.com/xiaweiss/miniprogram-bug-report/issues/40
  */
+page,
 view {
+  /** 默认字体 */
   font-family: system-ui, -apple-system;
+  /** 移动端按钮按下时，去除高亮 */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /** 默认行高 */
+  line-height: 1;
+
+  /** 默认字体（用于输入框占位符） */
+  --font-family: system-ui, -apple-system;
+  /** 输入框占位符颜色（背景白） */
+  --input-placeholder-color: #B2B2B2;
+
+  /** 夜间模式配色 */
+  --theme-dark-color-primary: #888;
+  --theme-dark-color-secondary: #666;
+  --theme-dark-background-color-primary: #1A1A1A;
+  --theme-dark-background-color-secondary: #292929;
+  --theme-dark-background-color-tertiary: #353535;
 }
 
 view,
 input {
   box-sizing: border-box;
-  flex-direction: row
 }
 
 image {
   display: block;
 }
 
+text {
+  cursor: inherit;
+}
+
 /** 分享按钮等默认样式重置，使用时需要设置 size="mini" */
-button {
+.app-button {
   display: block!important;
   padding: 0!important;
   /**
@@ -40,5 +54,44 @@ button {
    * hack 重置 margin 样式
    */
   margin: 0!important;
+  font-size: inherit;
+  font-weight: 400;
+  color: inherit;
   line-height: 1!important;
+}
+
+/**
+ * 笔记主题色设置
+ */
+.note-theme-white {
+  --note-theme-color-primary: #353535;
+  --note-theme-color-secondary: #888;
+  --note-theme-background-primary: #fff;
+  --note-theme-background-secondary: #F5F6F8;
+  --note-theme-box-shadow-primary: 0 -3px 4px 0 rgba(228,229,231,0.5);
+}
+
+.note-theme-yellow {
+  --note-theme-color-primary: #353535;
+  --note-theme-color-secondary: #888;
+  --note-theme-background-primary: #E9E8E3;
+  --note-theme-background-secondary: #E0E0DA;
+  --note-theme-box-shadow-primary: 0 -3px 4px 0 rgba(207,207,200,0.5);
+
+}
+
+.note-theme-pink {
+  --note-theme-color-primary: #353535;
+  --note-theme-color-secondary: #888;
+  --note-theme-background-primary: #F5EAEE;
+  --note-theme-background-secondary: #ECDDE3;
+  --note-theme-box-shadow-primary: 0 -3px 4px 0 rgba(230,206,216,0.5);
+}
+
+.note-theme-black {
+  --note-theme-color-primary: #9F9F9F;
+  --note-theme-color-secondary: #666;
+  --note-theme-background-primary: #1A1A1A;
+  --note-theme-background-secondary: #292929;
+  --note-theme-box-shadow-primary: none;
 }

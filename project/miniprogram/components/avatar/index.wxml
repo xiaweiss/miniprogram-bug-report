@@ -1,4 +1,7 @@
-<view class="avatar class" style="width:{{size}}px;height:{{size}}px;{{style}};">
+<view
+  class="avatar class {{src ? 'has-avatar' : ''}}"
+  style="width:{{size}}px;height:{{size}}px;{{style}};"
+>
   <image
     wx:if="{{src}}"
     class="avatar-url"
