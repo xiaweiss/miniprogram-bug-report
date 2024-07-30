@@ -1,6 +1,0 @@
-module.exports = function (itemColor, index) {
-  var color = itemColor.constructor === 'Array' ? itemColor[index] : itemColor
-  if (color) return 'color: ' + color + ';'
-
-  return ''
-}
